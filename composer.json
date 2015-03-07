@@ -8,7 +8,11 @@
         "cartalyst/sentry" : "2.1.*"
 	},
 	"autoload": {
-		"classmap": [
+		"psr-0": {
+        "TT":"app/"
+        },
+        
+        "classmap": [
 			"app/commands",
 			"app/controllers",
 			"app/models",
@@ -16,10 +20,7 @@
 			"app/database/seeds",
 			"app/tests/TestCase.php"
 		]
-     "psr-0": {
-        "TT":"app/TeachTogether"
-     }
-	},
+     },
 	"scripts": {
 		"post-install-cmd": [
 			"php artisan clear-compiled",
