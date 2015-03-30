@@ -11,6 +11,12 @@
 		"psr-0": {
         "TT":"app/"
         },
+
+        "psr-4": {
+        "TT\\Controllers\\":"app/controllers",
+        "TT\\Models\\":"app/models",
+        "TT\\Commands\\":"app/commands"
+        },
         
         "classmap": [
 			"app/commands",
