@@ -14,7 +14,7 @@ class CreateParentsTraitsTable extends Migration {
 	{
 		Schema::create('parents_traits', function(Blueprint $table)
 		{
-            $table->increments('user_id');
+            $table->increments('id');
 		});
 	}
 

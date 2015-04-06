@@ -3,15 +3,16 @@
 use View;
 use BaseController;
 
-class HomeController extends BaseController {
-
-	public function showHome()
-	{
-		return View::make('pages.home');
-    }
+class LoginController extends BaseController {
 
     public function getLogin()
     {
         return View::make('pages.login')->with('grades',[''=>'','K'=>'Kindergarten','First'=>'1']);
     }
+
+    public function postLogin()
+    {
+
+    }
+
 }

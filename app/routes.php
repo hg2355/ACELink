@@ -11,7 +11,10 @@
 |
 */
 
-Route::get('/', function()
+Route::group(['namespace' => 'TT\Controllers'],function() 
 {
-	return View::make('home');
+    Route::get('/', array('as'=>'welcome','uses'=>'HomeController@showHome'));
+    Route::get('/home', array('as'=>'home','uses'=>'HomeController@getLogin'));
+
+    Route::post('/teacher',array('as'=>'teacher.post','uses'=>'Teacher\SignUpController@store'));
 });

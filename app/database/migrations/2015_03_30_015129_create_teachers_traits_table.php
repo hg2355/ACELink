@@ -14,9 +14,8 @@ class CreateTeachersTraitsTable extends Migration {
 	{
 		Schema::create('teachers_traits', function(Blueprint $table)
 		{
-			$table->increments('user_id');
-            $table->smallInteger('grade_level');
-            $table->integer('school_id');
+			$table->increments('id');
+            $table->string('grade',1);
         });
 	}
 

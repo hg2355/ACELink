@@ -14,7 +14,7 @@ class CreateStudentsTraitsTable extends Migration {
 	{
 		Schema::create('students_traits', function(Blueprint $table)
 		{
-			$table->increments('user_id');
+			$table->increments('id');
 			$table->string('student_code');
 		});
 	}

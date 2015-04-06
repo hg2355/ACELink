@@ -24,7 +24,7 @@ class GroupSeeder extends Seeder {
         //Students
         Sentry::getGroupProvider()->create(array(
             'name'=>'Student',
-            'permissions'=>array('student'=>1));)
+            'permissions'=>array('student'=>1)));
 	}
 
 }

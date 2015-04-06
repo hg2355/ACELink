@@ -16,7 +16,7 @@ class CreateParentsStudentsPivot extends Migration {
         {
             $table->integer('parent_id');
             $table->integer('student_id');
-            $table->engine('InnoDB');
+            $table->engine = 'InnoDB';
             $table->primary(array('parent_id','student_id'));
 		});
 	}

@@ -9,8 +9,7 @@
 <body id="page-top" data-spy="scroll" data-target=".navbar-custom">
     @include('base.nav')
     @yield('content')
-    @include('base.footer')
-    @include('js.home')
+    @include('js.login')
 </body>
 
 </html>
