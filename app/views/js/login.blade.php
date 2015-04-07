@@ -100,7 +100,7 @@
         
         var firstName = $("#first_name").val();
         var lastName = $("#last_name").val();
-        var email = $("#email").val();
+        var email = $("#signupModal #email").val();
         var grade = $("#grade").val();
         var zipcode = $("#zipcode").val();
         var school = $("#school").val();
