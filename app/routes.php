@@ -14,8 +14,13 @@
 Route::group(['namespace' => 'TT\Controllers'],function() 
 {
     Route::get('/', array('as'=>'welcome','uses'=>'HomeController@showHome'));
-    Route::get('/login', array('as'=>'home','uses'=>'LoginController@getLogin'));
+    Route::get('/login', array('as'=>'login.get','uses'=>'LoginController@getLogin'));
     Route::get('/add-students',array('as'=>'add.students','uses'=>'Teacher\AddStudentController@show'));
 
     Route::post('/teacher',array('as'=>'teacher.post','uses'=>'Teacher\SignUpController@store'));
+    Route::post('/login', array('as'=>'login.post','uses'=>'LoginController@postLogin'));
+    Route::post('/reset-password', array('as'=>'reset.password.post','uses'=>'PasswordResetController@postReset'));
 });
+
+
+

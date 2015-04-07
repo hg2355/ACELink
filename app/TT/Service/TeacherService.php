@@ -1,5 +1,6 @@
 <?php namespace TT\Service;
 
+use Sentry;
 use TT\School\SchoolRepository;
 use TT\Teacher\TeacherRepository;
 use TT\Teacher\TeacherTraitRepository;
@@ -41,6 +42,11 @@ class TeacherService
             $teacherData = array_only($data,['first_name','last_name','email','title','traits_id','password','activated']);
             
             $teacher = $this->teacherRepo->create($teacherData);
+            
+            $teacherGroup = Sentry::findGroupByName('Teacher');
+
+            $teacher->addGroup($teacherGroup);
+
             $school = $this->schoolRepo->create($schoolData);
             
             \Event::fire('user.created',[$teacher,$password]);            

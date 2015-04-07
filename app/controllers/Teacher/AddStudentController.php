@@ -1,8 +1,9 @@
 <?php namespace TT\Controllers\Teacher;
 
 use View;
+use BaseController;
 
-class AddStudentController extends \BaseController {
+class AddStudentController extends BaseController {
 
 	public function show()
 	{

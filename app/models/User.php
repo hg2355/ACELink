@@ -17,4 +17,9 @@ class User extends CartalystUser
     {
         return $this->morphTo();
     }
+
+    public function groups()
+    {   
+        return $this->belongsToMany(static::$groupModel, static::$userGroupsPivot, 'user_id', 'group_id');
+    }   
 }

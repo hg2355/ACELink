@@ -52,7 +52,7 @@
                               <label for="email">Email: </label>
                             </div>
                             <div class="col-md-4 col-md-offset-1">
-                              <input type="email" class="form-control" id="username" required="required" />
+                              <input type="email" class="form-control" id="email" required="required" />
                       </div>
                     </div>
                     </div>
@@ -70,8 +70,8 @@
                       <div class="row">
                         
 
-          <span class="btn btn-default" data-toggle="modal" onclick="OpenForgetPassword(1);" data-target="#forgotPasswordModal">Forgot Password</span>
-          <span type="submit" class="btn btn-skin" onclick="javascript:AJAXLogin(1);">Log in</span>
+          <span class="btn btn-default" data-toggle="modal" data-target="#forgotPasswordModal">Forgot Password</span>
+          <span type="submit" id="login" class="btn btn-skin" >Log in</span>
                       </form>
                        </div>
                   </div>
@@ -186,7 +186,7 @@
       </div>
       <div class="modal-footer">
         <span type="button" class="btn btn-default" data-dismiss="modal">Cancel</span>
-        <span type="button" class="btn btn-primary" onclick="javascript:AJAXReset();">Reset Password</span>
+        <span type="button" id="reset_password" class="btn btn-primary">Reset Password</span>
       </div>
     </div>
   </div>
