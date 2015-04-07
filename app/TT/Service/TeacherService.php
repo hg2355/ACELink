@@ -33,15 +33,17 @@ class TeacherService
             $schoolData = array_only($data,['school','zipcode']);
 
             $password = str_random(16);
+            $activated = 1;
 
             $data = array_add($data,'password',$password);
+            $data = array_add($data,'activated',$activated);
 
-            $teacherData = array_only($data,['first_name','last_name','email','title','traits_id','password']);
+            $teacherData = array_only($data,['first_name','last_name','email','title','traits_id','password','activated']);
             
             $teacher = $this->teacherRepo->create($teacherData);
             $school = $this->schoolRepo->create($schoolData);
             
-                        
+            \Event::fire('user.created',[$teacher,$password]);            
             \DB::commit();
 
             return true;

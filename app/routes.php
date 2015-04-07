@@ -14,7 +14,8 @@
 Route::group(['namespace' => 'TT\Controllers'],function() 
 {
     Route::get('/', array('as'=>'welcome','uses'=>'HomeController@showHome'));
-    Route::get('/home', array('as'=>'home','uses'=>'HomeController@getLogin'));
+    Route::get('/login', array('as'=>'home','uses'=>'LoginController@getLogin'));
+    Route::get('/add-students',array('as'=>'add.students','uses'=>'Teacher\AddStudentController@show'));
 
     Route::post('/teacher',array('as'=>'teacher.post','uses'=>'Teacher\SignUpController@store'));
 });

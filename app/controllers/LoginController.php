@@ -7,7 +7,7 @@ class LoginController extends BaseController {
 
     public function getLogin()
     {
-        return View::make('pages.login')->with('grades',[''=>'','K'=>'Kindergarten','First'=>'1']);
+        return View::make('pages.login')->with('grades',[''=>'','K'=>'Kindergarten','1'=>'First']);
     }
 
     public function postLogin()

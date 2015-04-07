@@ -13,7 +13,8 @@ class Teacher extends User
                             'title',
                             'password',
                             'traits_id',
-                            'traits_type'
+                            'traits_type',
+                            'activated'
                           ];
     
     protected static $modelTraitType = 'TT\Models\TeacherTrait';
