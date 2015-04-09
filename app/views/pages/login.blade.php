@@ -198,7 +198,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h2 class="modal-title" id="signupSuccessModalLabel">A link for password reset is sent to email.<br>Please activate your account through the link mentioned in mail.</h2>
+        <h2 class="modal-title" id="signupSuccessModalLabel">A new password was sent to your email to login with.</h2>
       </div>
       <div class="modal-footer">
           <span type="button" class="btn btn-success" data-dismiss="modal">OK</span>

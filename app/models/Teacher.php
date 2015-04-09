@@ -33,6 +33,6 @@ class Teacher extends User
 
     public function schools()
     {
-        return $this->belongsToMany('TT\Models\School','teachers_schools','user_id');
+        return $this->belongsToMany('TT\Models\School','teachers_schools');
     }
 }

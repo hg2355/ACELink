@@ -12,6 +12,7 @@ class SchoolRepository extends ModelRepository
 
     public function create(array $data)
     {
+        
         $data['name'] = $data['school'];
 
         unset($data['school']);
@@ -20,4 +21,22 @@ class SchoolRepository extends ModelRepository
 
         return $this->model;
     }
+
+    public function findOrCreate(array $data)
+    {
+        
+        $school = $this->model->where('name','=',$data['school'])->first();
+
+        if( !is_null($school) )
+            return $school;
+
+        $data['name'] = $data['school'];
+
+        unset($data['school']);
+        
+        $this->save($data);
+
+        return $this->model;
+    }
+
 }

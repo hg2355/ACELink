@@ -8,6 +8,6 @@ class School extends \Eloquent
 
     public function teachers()
     {
-        return $this->belongsToMany('TT\Models\Teacher','teachers_schools','school_id');
+        return $this->belongsToMany('TT\Models\Teacher','teachers_schools');
     }
 }

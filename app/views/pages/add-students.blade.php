@@ -5,11 +5,11 @@
 
  <div class="col-md-6 col-md-offset-4 btn-group text-center" role="group"  aria-label="...">
     <a class="btn-navbar btn active btn-default" role="button" href="">
-          <img src=""  class="img-circle" alt="" /><br>
+          <img src="https://s3.amazonaws.com/teachtogether.co/assets/img/service-icon-3.png"  class="img-circle" alt="" /><br>
     Class</a>
 
         <a class="btn-navbar btn btn-default" role="button" href="#" class="btn dropdown-toggle" data-toggle="dropdown">
-        <img src="" class="img-circle"  alt="" /><br>
+        <img src="https://s3.amazonaws.com/teachtogether.co/assets/img/service-icon-5.png" class="img-circle"  alt="" /><br>
     Activities <span class="caret"></span></a>
 
             <ul class="dropdown-menu" role="menu">
@@ -22,11 +22,11 @@
             </ul>
         
         <a class="btn-navbar btn  btn-default" role="button" href="">
-          <img src="" class="img-circle"  alt="" /><br>
+          <img src="https://s3.amazonaws.com/teachtogether.co/assets/img/service-icon-1.png" class="img-circle"  alt="" /><br>
     Reports</a>
 
         <a class="btn-navbar btn btn-default" role="button" href="">
-          <img src="" class="img-circle"  alt="" /><br>
+          <img src="https://s3.amazonaws.com/teachtogether.co/assets/img/service-icon-4.png" class="img-circle"  alt="" /><br>
     Messages</a>
 
         <br> 
@@ -156,7 +156,7 @@ parent notes using the button below.<br><br>
           <span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button></h2></div>
       <div class="modal-body">
         <table>
-          <tr><td><img src="" alt="Teacher Explains the App"></td></tr>
+          <tr><td><img src="https://s3.amazonaws.com/teachtogether.co/assets/img/youtube.png" alt="Teacher Explains the App"></td></tr>
           <tr><td>
           <p><br><b>Description</b><br>
         This app allows teachers to view parent activity logs and send parents customized notes of recognition or encouragement.
@@ -183,7 +183,6 @@ parent notes using the button below.<br><br>
         <table>
           <tr><td>
           <p>
-			<!--
             <?php 
                 if(0)
                     echo 'How many students do you have?&nbsp;&nbsp;<input type="number">
@@ -213,7 +212,6 @@ parent notes using the button below.<br><br>
                             <hr></p>'; 
                 }
             ?>
-            -->
           </p></td></tr></table>
       </div>
       <div class="modal-footer">

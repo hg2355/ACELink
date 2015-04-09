@@ -10,7 +10,7 @@ class TeacherCreateForm extends FormModel
         return [
                 'first_name' => 'required',
                 'last_name' => 'required',
-                'email' => 'required|email',
+                'email' => 'required|email|unique:users',
                 'grade' => 'required',
                 'zipcode' => 'required|regex:/^\d{5,}$/',
                 'school' => 'required' 

@@ -4,12 +4,21 @@ use Input;
 use Sentry;
 use Response;
 use BaseController;
-use TT\Email\EmailPasswordReset;
+use TT\Service\TeacherService;
+use TT\User\UserPasswordResetForm;
 
 class PasswordResetController extends BaseController {
-    
-    public function postReset()
+
+    private $teacherService = null;
+
+    public function __construct(TeacherService $teacherService)
     {
+        $this->teacherService = $teacherService;
+    }
+
+    public function postReset()
+    {   
+        /**
         try
         {
             $email = Input::get('email');
@@ -40,6 +49,29 @@ class PasswordResetController extends BaseController {
         {   
             \Log::error($ex);        
             return Response::json([],400);
+        }
+
+        **/
+        $input = Input::all();
+
+        $form = new UserPasswordResetForm;
+
+        if( !$form->isValid($input) )
+        {
+            return $this->formResponse($form->getErrors());
+        }
+
+        else
+        {
+            if( $this->teacherService->resetPassword($input) )
+            {
+                return $this->successResponse();
+            }
+
+            else
+            {
+                return $this->failResponse();
+            }   
         }
     }
 

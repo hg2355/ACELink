@@ -74,17 +74,7 @@
                 processData: false,
                 success: function(data)
                 {   
-                    var success = data.success;
-
-                    if( success == 1)
-                    {
-                        alert('Successfully signed in');
-                    }
-
-                    else
-                    {
-                        alert('Oops something went wrong went logging in. Make sure account exists and username and password exist');
-                    }
+                    alert(data.msg);
                 },
                 error: function(data) 
                 {
@@ -133,14 +123,24 @@
                     {
                         var errors = data.errors;
                         var msg = '';
-
-                        $.each(errors, function(key, value)
+                        
+                        if(errors)
                         {
-                            msg = msg.concat(value).concat("<br>");
-                        });
+                            $.each(errors, function(key, value)
+                            {
+                                msg = msg.concat(value).concat("<br>");
+                            });
 
-                        errorText.html(msg);
-                        $(".text-danger").removeClass('hidden');
+                            errorText.html(msg);
+                            $(".text-danger").removeClass('hidden');
+                        }
+
+                        else
+                        {
+                            msg = data.msg;
+                            errorText.html(msg);
+                            $(".text-danger").removeClass('hidden');
+                        }
                     }
                 },
                 error: function(data) 

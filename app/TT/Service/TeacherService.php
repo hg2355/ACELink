@@ -17,6 +17,47 @@ class TeacherService
         $this->schoolRepo = $schoolRepo;
         $this->teacherTraitRepo = $teacherTraitRepo;
     }
+    
+    public function resetPassword(array $input)
+    {
+        try
+        {
+            \DB::beginTransaction();
+
+            $email = $input['email'];
+            
+            $user = Sentry::findUserByLogin($email);
+
+            $resetCode = $user->getResetPasswordCode();
+
+            if($user->checkResetPasswordCode($resetCode))
+            {
+                $newPassword = str_random(16);
+
+                if( $user->attemptResetPassword($resetCode,$newPassword) )
+                {
+                    \Event::fire('user.resetpwd',[$user,$newPassword]);
+                    \DB::commit();
+                    
+                    return true;
+                }
+
+                return false;
+
+            }
+
+            return false;
+        }
+
+        catch(\Exception $ex)
+        {   
+            \Log::error($ex);
+            \DB::rollback();
+            return false;        
+        }
+
+
+    }
 
     public function create(array $data)
     {
@@ -36,8 +77,8 @@ class TeacherService
             $password = str_random(16);
             $activated = 1;
 
-            $data = array_add($data,'password',$password);
-            $data = array_add($data,'activated',$activated);
+            $data['password'] = $password;
+            $data['activated'] = $activated;
 
             $teacherData = array_only($data,['first_name','last_name','email','title','traits_id','password','activated']);
             
@@ -46,10 +87,13 @@ class TeacherService
             $teacherGroup = Sentry::findGroupByName('Teacher');
 
             $teacher->addGroup($teacherGroup);
+        
+            $school = $this->schoolRepo->findOrCreate($schoolData);
 
-            $school = $this->schoolRepo->create($schoolData);
-            
+            $teacher->schools()->attach($school->id);
+
             \Event::fire('user.created',[$teacher,$password]);            
+            
             \DB::commit();
 
             return true;
