@@ -43,7 +43,7 @@
         <div class="wow fadeInLeft" >
                 <div class="service-box">
           <div class="service-icon">
-            <img src="https://s3.amazonaws.com/teachtogether.co/assets/img/service-icon-1.PNG" alt="" />
+            <img src="https://s3.amazonaws.com/teachtogether.co/assets/img/service-icon-1.png" alt="" />
           </div>
           <div class="service-desc">
             <h5>Inform</h5>
@@ -57,7 +57,7 @@
         <div class="wow fadeInUp" >
                 <div class="service-box">
           <div class="service-icon">
-            <img src="https://s3.amazonaws.com/teachtogether.co/assets/img/service-icon-3.PNG" alt="" />
+            <img src="https://s3.amazonaws.com/teachtogether.co/assets/img/service-icon-3.png" alt="" />
           </div>
           <div class="service-desc">
             <h5>Empower</h5>
@@ -73,7 +73,7 @@
         <div class="wow fadeInUp" >
                 <div class="service-box">
           <div class="service-icon">
-            <img src="https://s3.amazonaws.com/teachtogether.co/assets/img/service-icon-2.PNG" alt="" />
+            <img src="https://s3.amazonaws.com/teachtogether.co/assets/img/service-icon-2.png" alt="" />
           </div>
           <div class="service-desc">
             <h5>Celebrate</h5>
@@ -88,7 +88,7 @@
         <div class="wow fadeInRight" >
                 <div class="service-box">
           <div class="service-icon">
-            <img src="https://s3.amazonaws.com/teachtogether.co/assets/img/service-icon-4.PNG" alt="" />
+            <img src="https://s3.amazonaws.com/teachtogether.co/assets/img/service-icon-4.png" alt="" />
           </div>
           <div class="service-desc">
             <h5>Coordinate</h5>
