@@ -13,14 +13,21 @@
 
 Route::group(['namespace' => 'TT\Controllers'],function() 
 {
-    Route::get('/', array('as'=>'welcome','uses'=>'HomeController@showHome'));
+    Route::get('/', array('as'=>'welcome','uses'=>'WelcomeController@showWelcome'));
     Route::get('/login', array('as'=>'login.get','uses'=>'LoginController@getLogin'));
-    Route::get('/add-students',array('as'=>'add.students','uses'=>'Teacher\AddStudentController@show'));
-
+    
     Route::post('/teacher',array('as'=>'teacher.post','uses'=>'Teacher\SignUpController@store'));
+    Route::post('/parent',array('as'=>'parent.post','uses'=>'Parent\SignUpController@store'));
     Route::post('/login', array('as'=>'login.post','uses'=>'LoginController@postLogin'));
     Route::post('/reset-password', array('as'=>'reset.password.post','uses'=>'PasswordResetController@postReset'));
 });
 
 
+Route::group(['before' => 'auth', 'namespace' => 'TT\Controllers'], function()
+{
+    Route::get('/logout',array('as'=>'logout.get','uses'=>'LoginController@getLogout'));
+    Route::get('/home',array('as'=>'home.get','uses'=>'HomeController@showHome'));
 
+    Route::get('/{user_type}/home',array('as'=>'home.user','uses'=>'HomeController@getHome'));
+    Route::post('/print-codes',array('as'=>'print.codes','uses'=>'Teacher\StudentController@printCodes'));
+});

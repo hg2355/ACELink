@@ -1,6 +1,7 @@
 /bootstrap/compiled.php
 /vendor
 /storage
+/public/pdfs
 composer.phar
 .env.*.php
 .env.php

@@ -1,10 +1,11 @@
 <?php namespace TT\Models;
 
-use TT\Traits\TeacherTrait;
+use TT\Traits\ParentTrait;
+use Illuminate\Database\Eloquent\SoftDeletingTrait;
 
-class Teacher extends User
+class Partner extends User
 {
-    use TeacherTrait;
+    use ParentTrait;
 
     protected $fillable = [ 'first_name',
                             'last_name',
@@ -16,7 +17,7 @@ class Teacher extends User
                             'activated'
                           ];
     
-    protected static $modelTraitType = 'TT\Models\TeacherTrait';
+    protected static $modelTraitType = 'TT\Models\ParentTrait';
 
     public function fill(array $fillable)
     {
@@ -25,13 +26,13 @@ class Teacher extends User
         parent::fill($fillable);
     }
 
-    public function traits()
+    public function getRelationshipAttribute()
     {
-        return $this->morphTo();
-    }
-    public function schools()
-    {
-        return $this->belongsToMany('TT\Models\School','teachers_schools');
+        return $this->pivot->relationship;
     }
 
+    public function student()
+    {
+        return $this->belongsToMany('TT\Models\Student','parents_students','parent_id','student_id')->first();
+    }
 }

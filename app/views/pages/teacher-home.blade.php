@@ -1,6 +1,3 @@
-@extends('layout.add-students')
-@section('content')
-
 <section id="service" class="home-section text-center">
 
  <div class="col-md-6 col-md-offset-4 btn-group text-center" role="group"  aria-label="...">
@@ -79,24 +76,26 @@ parent notes using the button below.<br><br>
             <th style="vertical-align:bottom">Student Name</th>
             <th style="vertical-align:bottom">Parent Info</th>
         </tr></thead>
-        <tbody >
-            <tr>
-             
-                <td> <button type="button" class="btn btn-info " disabled="disabled">
-    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> &nbsp; </button>
-    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="">
-    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> &nbsp; </button></td>
-                <td style="text-align:left; vertical-align:middle">Template line</td>
-                <td></td>
+        <tbody >              
+                @foreach($user->students() as $student)
+                <tr>
+					<td>
+						<button type="button" class="btn btn-info " disabled="disabled">
+						<span class="glyphicon glyphicon-ok" aria-hidden="true"></span> &nbsp; </button>
+						<button type="button" class="btn btn-danger" data-toggle="modal" data-target="">
+						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> &nbsp; </button>
+					</td>
+                    <td style="text-align:left; vertical-align:middle"> {{ $student->fullname }} </td>
+                    <td style="text-align:left; vertical-align:middle"> {{ $student->partner()->relationship }} </td>
+                @endforeach
+                
         </tbody>
     </table>
 </div>
-
-
-    
-
     </div>
   </div>
+  
+ <!--
   <div class="row">
       <div class="col-lg-2 col-lg-offset-5">
         <hr class="marginbot-50">
@@ -144,6 +143,7 @@ parent notes using the button below.<br><br>
     </div>
   </div>
 </div>
+-->
 </section>
 
 <div class="modal fade" id="EditStudent" tabindex="-1" role="dialog" aria-labelledby="NotesModalLabel" aria-hidden="true">
@@ -184,42 +184,26 @@ parent notes using the button below.<br><br>
           <tr><td>
           <p>
             <?php 
-                if(0)
-                    echo 'How many students do you have?&nbsp;&nbsp;<input type="number">
+                    echo 'How many students do you have?&nbsp;&nbsp;<input id="student_count" value="1" type="number" min="1" step"1">
                             <br>
                             <p>The note to parents will include information to register (webiste URL and special codes) 
                             with the following message to parents. If you want to edit the message, click edit below or 
-                            click print to continue.
-                            <hr>
-                            Dear Parent,<br>
-                            Im using a new service
-                            <hr></p>'; 
-
-                else
-                {
-                    echo 'How many students do you have?&nbsp;&nbsp;<input type="number">
-                            <br>
-                            <p>The note to parents will include information to register (webiste URL and special codes) 
-                            with the following message to parents. If you want to edit the message, click edit below or 
-                            click print to continue.
+                            click print to continue.</p>
+                            <div id="message">
                             <hr>
                             Dear Parent,<br><br>
                             I\'m using a new service called Teach Together to help me connect with my students\' parents.<br><br>
-                            To register for the service, use your smartphone or computer to
-                            login to the following website and click the \'Parents\' tab.<br><br>
+                            To register for the service, use your smartphone or computer to login to the following website and click the \'Parents\' tab.<br><br>
                             <b>Website:</b> teachtogether.co<br>
-                            <b>Code:</b> A random code will be assigned to each student
-                            <hr></p>'; 
-                }
+                            </hr>
+                            </div>'; 
             ?>
           </p></td></tr></table>
       </div>
       <div class="modal-footer">
         <span type="button" class="btn btn-default" data-dismiss="modal">Cancel</span>
-        <span type="button" class="btn btn-info" data-dismiss="modal">Edit Message</span>
-        <span type="button" class="btn btn-success" onclick="location.href='">Print Codes</span>
+        <span id="print_codes" type="button" class="btn btn-success" >Print Codes</span>
       </div>
     </div>
   </div>
 </div>
-@stop

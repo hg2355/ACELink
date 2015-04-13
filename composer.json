@@ -6,7 +6,8 @@
 	"require": {
 		"laravel/framework": "4.2.*",
         "cartalyst/sentry" : "2.1.*",
-        "guzzlehttp/guzzle": "~4.0"
+        "guzzlehttp/guzzle": "~4.0",
+        "maxxscho/laravel-tcpdf": "0.*"
 	},
 	"autoload": {
         "classmap": [
@@ -15,14 +16,16 @@
 			"app/database/seeds"
 		],
         
-        "psr-0" : {
-        },
-
         "psr-4": {
         "TT\\" : "app/TT",
         "TT\\Controllers\\" : "app/controllers",
         "TT\\Models\\" : "app/models"
-        }
+        },
+
+        "files": [
+            "app/TT/Support/Lists.php"
+        ]
+
      },
 	"scripts": {
 		"post-install-cmd": [

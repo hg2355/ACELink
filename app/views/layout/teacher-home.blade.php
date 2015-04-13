@@ -9,5 +9,6 @@
 <body id="page-top" data-spy="scroll" data-target=".navbar-custom">
     @yield('content')
 </body>
-
+    @include('js.students')
+    @include('base.footer')
 </html>

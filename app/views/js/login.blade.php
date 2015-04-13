@@ -7,7 +7,12 @@
 <script src="https://s3.amazonaws.com/teachtogether.co/assets/js/custom.js"></script>
 
 <script>
-    
+
+    $('#studentSignUpModal').on('show.bs.modal', function () {
+        $('.modal .modal-body').css('overflow-y', 'auto'); 
+        $('.modal .modal-body').css('height', $(window).height() * 0.7);
+    });
+
     $("#reset_password").click(function()
     {
         $("#forgotPasswordModal #errorText").parent().addClass("hidden");
@@ -73,15 +78,70 @@
                 dataType: "json",
                 processData: false,
                 success: function(data)
+                {
+                    window.location.href = '/home';
+                },
+                error: function(x,status,error) 
+                {
+                    if( x.status == 403 )
+                        window.location.href = '/login';
+                }
+        });
+
+    });
+
+    $("#student_signup").click(function(){
+
+        $('#signup_errors').empty();
+        $("#signup_alert").addClass('hidden');
+    
+        var parentFullName = $("#parent_fullname").val();
+        var studentFullName = $("#student_fullname").val();
+        var email = $("#email").val();
+        var code = $("#student_code").val();
+        var relation = $("#relationship").val();
+
+        var dataString = 'parent_fullname='+parentFullName+
+                         '&student_fullname='+studentFullName+
+                         '&email='+email+
+                         '&student_code='+code+
+                         '&relationship='+relation;
+        $.ajax({
+                url: "parent",
+                type: "post",
+                data: dataString,
+                dataType: "json",
+                processData: false,
+                success: function(data)
                 {   
-                    alert(data.msg);
+                    var success = data.success;
+
+                    if( success == 1)
+                    {
+                        $('#signupModal').modal('hide');
+                        $('#signupSuccessModal').modal('show');
+                    }
+
+                    else
+                    {
+                        var errors = data.errors;
+                        
+                        if(errors)
+                        {
+                            $.each(errors, function(key, value)
+                            {
+                                $('#signup_errors').append('<li>'+value+'</li>');
+                            });
+
+                            $("#signup_alert").removeClass('hidden');
+                        }
+                    }
                 },
                 error: function(data) 
                 {
                     alert('Oops something went went on the server. Contact the admin.');
                 }
         });
-
     });
 
     $("#create").click(function(){

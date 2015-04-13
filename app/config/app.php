@@ -26,7 +26,7 @@ return array(
 	|
 	*/
 
-	'url' => 'http://localhost',
+	'url' => 'http://tt.dev',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -123,6 +123,8 @@ return array(
         'Illuminate\Workbench\WorkbenchServiceProvider',
         'Cartalyst\Sentry\SentryServiceProvider',
         'TT\Provider\UserEventsProvider',
+        'TT\Provider\UserProvider',
+        'Maxxscho\LaravelTcpdf\LaravelTcpdfServiceProvider',
 	),
 
 	/*
@@ -190,7 +192,7 @@ return array(
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
         'View'            => 'Illuminate\Support\Facades\View',
         'Sentry' => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
-
+        'FormList'=> 'TT\Support\Lists'
 	),
 
 );

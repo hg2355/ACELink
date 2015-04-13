@@ -35,15 +35,22 @@ App::after(function($request, $response)
 
 Route::filter('auth', function()
 {
-	if (Auth::guest())
-	{
+	if ( !TT\Auth\Authenticator::auth() )
+    {
+        if( Route::input('user_type') )
+        {
+            $user = Route::input('user_type');
+
+            Session::put('user_type',$user);
+        }
+
 		if (Request::ajax())
 		{
-			return Response::make('Unauthorized', 401);
+			return Response::make('Not logged in.', 403);
 		}
 		else
 		{
-			return Redirect::guest('login');
+			return Redirect::route('login.get');
 		}
 	}
 });

@@ -52,4 +52,19 @@ class Authenticator
         }
     }
 
+    public static function auth()
+    {
+        return Sentry::check();
+    }
+
+    public static function logout()
+    {
+        return Sentry::logout();
+    }
+
+    public static function user($id=null)
+    {
+        return is_null($id) ? Sentry::getUser() : Sentry::findUserById($id);
+    }
+
 }

@@ -2,6 +2,8 @@
 
 use View;
 use Input;
+use Session;
+use Redirect;
 use Response;
 use BaseController;
 use TT\Auth\Authenticator;
@@ -10,7 +12,7 @@ class LoginController extends BaseController {
 
     public function getLogin()
     {
-        return View::make('pages.login')->with('grades',[''=>'','K'=>'Kindergarten','1'=>'First']);
+        return View::make('pages.login')->with('user_type',Session::get('user_type'));
     }
 
     public function postLogin()
@@ -18,10 +20,17 @@ class LoginController extends BaseController {
         $credentials = Input::all();
         
         if( Authenticator::login($credentials,$this) )
-            return $this->successResponse;
+            return $this->successResponse();
         else
-            return $this->failResponse;
+            return $this->failResponse();
 
+    }
+
+    public function getLogout()
+    {
+        Authenticator::logout();
+        Session::flush();
+        return Redirect::route('welcome');
     }
 
 }

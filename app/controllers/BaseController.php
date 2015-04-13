@@ -18,6 +18,11 @@ class BaseController extends \Controller {
 			$this->layout = View::make($this->layout);
 		}
     }
+    
+    public function getFileURL($filePath)
+    {
+        return Response::json(['success'=>0,'url'=>asset($filePath)],200);
+    }
 
     public function formResponse(array $errors)
     {
