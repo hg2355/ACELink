@@ -37,16 +37,16 @@ class User extends CartalystUser
     public function student()
     {
         if( $this->traits_type === 'TT\Models\ParentTrait')
-            return $this->belongsToMany('TT\Models\Student','parents_students','parent_id','student_id')->first();
+            return $this->belongsToMany('TT\Models\Student','parents_students','parent_id','student_id');
         else
-            return $this->belongsToMany('TT\Models\Student','teachers_students','teacher_id','student_id')->first();
+            return $this->belongsToMany('TT\Models\Student','teachers_students','teacher_id','student_id');
     }
 
     public function students()
     {
         if( $this->traits_type === 'TT\Models\ParentTrait')
-            return $this->belongsToMany('TT\Models\Student','parents_students','parent_id','student_id')->get();
+            return $this->belongsToMany('TT\Models\Student','parents_students','parent_id','student_id');
         else
-            return $this->belongsToMany('TT\Models\Student','teachers_students','teacher_id','student_id')->get();
+            return $this->belongsToMany('TT\Models\Student','teachers_students','teacher_id','student_id');
     }
 }

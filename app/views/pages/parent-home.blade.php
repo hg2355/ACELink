@@ -1,4 +1,6 @@
 
+<?php $student = $user->students()->first() ?>
+<?php $teacher = $student->teachers()->first() ?>
 <section id="service" class="home-section text-center">
     <div class="container">
     <div class="heading-about">
@@ -56,7 +58,7 @@
           <!-- description -->
           <div class="col-lg-8 col-sm-8 col-md-8 col-xs-8 bg-info">
         <h4>Invitation</h4>
-        <p> <?php echo $user->student()->teacher()->title.'. '.$user->student()->teacher()->last_name ?> &nbsp;sent you an invitation for a parent teacher conference.
+        <p> <?php echo $teacher->title.'. '.$teacher->last_name ?> &nbsp;sent you an invitation for a parent teacher conference.
           </p>
           
           </div>
@@ -89,8 +91,8 @@
           <!-- description -->
           <div class="col-lg-8 col-sm-8 col-md-8 col-xs-8 bg-info">
         <h4>CHARACTER SERIES</h4>
-        <p> <?php echo $user->student()->teacher()->title.'. '.$user->student()->teacher()->last_name ?> &nbsp;is asking you to discuss Grit with <?php 
-            echo $user->student()->first_name; ?>.
+        <p> <?php echo $teacher->title.'. '.$teacher->last_name ?> &nbsp;is asking you to discuss Grit with <?php 
+            echo $student->first_name; ?>.
           </p>
           
           </div>
@@ -120,7 +122,7 @@
           <!-- description -->
           <div class="col-lg-8 col-sm-8 col-md-8 col-xs-8 bg-info">
         <h4>Number Sense</h4>
-        <p> Help <?php echo $user->student()->first_name; ?> learn more about numbers.
+        <p> Help <?php echo $student->first_name; ?> learn more about numbers.
           </p>
           
           </div>
@@ -153,7 +155,7 @@
           <!-- description -->
           <div class="col-lg-8 col-sm-8 col-md-8 col-xs-8 bg-info">
         <h4>Letter Sounds</h4>
-        <p> Teach <?php echo $user->student()->first_name ?> about letter sounds.
+        <p> Teach <?php echo $student->first_name ?> about letter sounds.
           </p>
           
           </div>
@@ -189,7 +191,7 @@
           <!-- description -->
           <div class="col-lg-8 col-sm-8 col-md-8 col-xs-8 bg-info">
         <h4>Community Event</h4>
-        <p> Take <?php echo $user->student()->first_name ?> to family literacy night at 
+        <p> Take <?php echo $student->first_name ?> to family literacy night at 
           La Casa Azul Bookstore this Tuesday from 4 to 6pm.
 
 
@@ -247,7 +249,7 @@ End of your to-do list. Browse the list below for more activities.<br><br>
           <!-- description -->
           <div class="col-lg-8 col-sm-8 col-md-8 col-xs-8 bg-info">
         <h4>Jobs of the future</h4>
-        <p> Help <?php echo $user->student()->first_name ?> understand what the future will be like. </p>
+        <p> Help <?php echo $student->first_name ?> understand what the future will be like. </p>
           </div>
 
       </div>

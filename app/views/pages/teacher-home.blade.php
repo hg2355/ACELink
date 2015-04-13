@@ -76,8 +76,9 @@ parent notes using the button below.<br><br>
             <th style="vertical-align:bottom">Student Name</th>
             <th style="vertical-align:bottom">Parent Info</th>
         </tr></thead>
-        <tbody >              
-                @foreach($user->students() as $student)
+        <tbody >
+                <?php $students = $user->students()->get() ?>              
+                @foreach($students as $student)
                 <tr>
 					<td>
 						<button type="button" class="btn btn-info " disabled="disabled">
@@ -86,7 +87,8 @@ parent notes using the button below.<br><br>
 						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> &nbsp; </button>
 					</td>
                     <td style="text-align:left; vertical-align:middle"> {{ $student->fullname }} </td>
-                    <td style="text-align:left; vertical-align:middle"> {{ $student->partner()->relationship }} </td>
+                    <?php $relationship = $student->partners()->first()->relationship ?>
+                    <td style="text-align:left; vertical-align:middle"> {{ $relationship }} </td>
                 @endforeach
                 
         </tbody>

@@ -27,16 +27,15 @@ class Student extends User
         parent::fill($fillable);
     }
 
-    public function teacher()
+    public function teachers()
     {
-        return $this->belongsToMany('TT\Models\Teacher','teachers_students','student_id','teacher_id')->first();
+        return $this->belongsToMany('TT\Models\Teacher','teachers_students','student_id','teacher_id');
     }
     
-    public function partner()
+    public function partners()
     {
         return $this->belongsToMany('TT\Models\Partner','parents_students','student_id','parent_id')
-                    ->withPivot('relationship')
-                    ->first();
+                    ->withPivot('relationship');
     }
 
     private function generateEmail()
