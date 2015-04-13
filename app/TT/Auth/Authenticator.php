@@ -1,6 +1,7 @@
 <?php namespace TT\Auth;
 
 use Sentry;
+use Session;
 
 class Authenticator
 {
@@ -11,10 +12,10 @@ class Authenticator
 
         try
         {
-            $user = Sentry::getUserProvider()->findByCredentials($credentials);
+            $user = Sentry::findUserByCredentials($credentials,false);
 
             Sentry::login($user,false);
-
+            
             $listener->setMsg('messages.valid_login',['email'=> $user->email]);
             return true;
         }
@@ -62,9 +63,9 @@ class Authenticator
         return Sentry::logout();
     }
 
-    public static function user($id=null)
+    public static function user()
     {
-        return is_null($id) ? Sentry::getUser() : Sentry::findUserById($id);
+        return Sentry::getUser();
     }
 
 }

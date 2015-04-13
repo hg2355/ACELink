@@ -30,9 +30,4 @@ class Partner extends User
     {
         return $this->pivot->relationship;
     }
-
-    public function student()
-    {
-        return $this->belongsToMany('TT\Models\Student','parents_students','parent_id','student_id')->first();
-    }
 }

@@ -13,7 +13,12 @@ class User extends CartalystUser
     {
         $this->setHasher(new \Cartalyst\Sentry\Hashing\NativeHasher);
     }
-    
+
+    public function scopeEmail($query,$email)
+    {
+        return $query->where('email','=',$email)->first();
+    }
+
     public function getFullNameAttribute()
     {
         return $this->first_name . ' ' . $this->last_name;
@@ -28,15 +33,20 @@ class User extends CartalystUser
     {   
         return $this->belongsToMany(static::$groupModel, static::$userGroupsPivot, 'user_id', 'group_id');
     }
-    
-    public function students()
-    {
-        return $this->belongsToMany('TT\Models\Student','teachers_students','teacher_id','student_id')->get();
-    }
 
     public function student()
     {
-        return $this->belongsToMany('TT\Models\Student','teachers_students','teacher_id','student_id')->first();
+        if( $this->traits_type === 'TT\Models\ParentTrait')
+            return $this->belongsToMany('TT\Models\Student','parents_students','parent_id','student_id')->first();
+        else
+            return $this->belongsToMany('TT\Models\Student','teachers_students','teacher_id','student_id')->first();
     }
-      
+
+    public function students()
+    {
+        if( $this->traits_type === 'TT\Models\ParentTrait')
+            return $this->belongsToMany('TT\Models\Student','parents_students','parent_id','student_id')->get();
+        else
+            return $this->belongsToMany('TT\Models\Student','teachers_students','teacher_id','student_id')->get();
+    }
 }
