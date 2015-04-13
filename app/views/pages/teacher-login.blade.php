@@ -155,7 +155,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h2 class="modal-title" id="signupSuccessModalLabel">Congratulations! New teacher is created successfully.<br>Login credentials are sent to your email address.<br>Please login as a teacher.</h2>
+        <h2 class="modal-title" id="signupSuccessModalLabel">Signup successful. Login credentials were sent to your email address.
       </div>
       <div class="modal-footer">
         <span type="button" class="btn btn-success" data-dismiss="modal">OK</span>
