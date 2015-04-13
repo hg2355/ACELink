@@ -97,7 +97,7 @@
     
         var parentFullName = $("#parent_fullname").val();
         var studentFullName = $("#student_fullname").val();
-        var email = $("#sigmupModal #email").val();
+        var email = $("#signupModal #email").val();
         var code = $("#student_code").val();
         var relation = $("#relationship").val();
 
