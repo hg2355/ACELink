@@ -1,5 +1,5 @@
 <section id="service" class="home-section text-center">
-
+<!--
  <div class="col-md-6 col-md-offset-4 btn-group text-center" role="group"  aria-label="...">
     <a class="btn-navbar btn active btn-default" role="button" href="">
           <img src="https://s3.amazonaws.com/teachtogether.co/assets/img/service-icon-3.png"  class="img-circle" alt="" /><br>
@@ -28,35 +28,31 @@
 
         <br> 
 </div>
-
+-->
 
     <div class="container">
-    <div class="heading-about">
-       
-   
 
-    <div class="row">
-     
-    </div>
-    </div>
- <br><br>
-   <div class="row col-lg-8 col-lg-offset-2 bg-info">
+ <div class="row col-lg-8 col-lg-offset-2" >
+ <button type="button" class="btn btn-info pull-right" data-toggle="collapse" data-target="#codes">
+  <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>&nbsp;
+  How do I register parents?</button></div>
+             
+   <div class="row col-lg-6 col-lg-offset-3 bg-info collapse" id="codes">
                    
 <p class="col-lg-6 col-lg-offset-3 bg-info"><br>
-<b><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>&nbsp;</b>To register students, send parents a note home that gives them the registration info. You can automatically print
+<b><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>&nbsp;</b>To register parents, send a note home that gives them the registration info. You can automatically print
 parent notes using the button below.<br><br>
 
 <button type="button" class="btn btn-info" data-toggle="modal" data-target="#StudentCodes">
     <span class="glyphicon glyphicon-print" aria-hidden="true"></span> &nbsp; Print Parent Notes</button></p>
    
   </div>
+  
 <div class="row">
-      <div class="col-lg-2 col-lg-offset-5">
-        <hr class="marginbot-50">
-      </div>
+      <Br><br><br>
     </div>
 <div class="row">
-        <h3>Active Students</h3>
+        <h3>Active Students*</h3>
         
       </div>
 <div class="row">
@@ -65,14 +61,11 @@ parent notes using the button below.<br><br>
    
 <div class="container-fluid" id="dispData">
     <table class="table table-bordered sttable table-striped">
+        
         <col width="30%">
-
-        <col width="35%">
-        <col width="35%"
+        <col width="70%"
                 <thead>
                 <tr>
-         
-            <th></th>
             <th style="vertical-align:bottom">Student Name</th>
             <th style="vertical-align:bottom">Parent Info</th>
         </tr></thead>
@@ -80,19 +73,19 @@ parent notes using the button below.<br><br>
                 <?php $students = $user->students()->get() ?>              
                 @foreach($students as $student)
                 <tr>
-					<td>
-						<button type="button" class="btn btn-info " disabled="disabled">
-						<span class="glyphicon glyphicon-ok" aria-hidden="true"></span> &nbsp; </button>
-						<button type="button" class="btn btn-danger" data-toggle="modal" data-target="">
-						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> &nbsp; </button>
-					</td>
-                    <td style="text-align:left; vertical-align:middle"> {{ $student->fullname }} </td>
+					
+                    <td style="text-align:left; vertical-align:middle"> 
+                      {{ $student->fullname }} </td>
                     <?php $relationship = $student->partners()->first()->relationship ?>
-                    <td style="text-align:left; vertical-align:middle"> {{ $relationship }} </td>
+                    <td style="text-align:left; vertical-align:middle"> 
+                      {{ $student->fullname }}'s {{ $relationship }} has signed up successfully.</td>
                 @endforeach
                 
         </tbody>
     </table>
+
+    *When parents have registered, their information shows up in the active students list. If parents do not register,
+    please follow up with email, phone call or text to support them with the sign-up process.
 </div>
     </div>
   </div>
@@ -182,22 +175,23 @@ parent notes using the button below.<br><br>
       <button type="button" class="close" data-dismiss="modal">
           <span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button></h2></div>
       <div class="modal-body">
-        <table>
+        <table class="table table-hover table-striped">
           <tr><td>
           <p>
             <?php 
                     echo 'How many students do you have?&nbsp;&nbsp;<input id="student_count" value="1" type="number" min="1" step"1">
                             <br>
                             <p>The note to parents will include information to register (webiste URL and special codes) 
-                            with the following message to parents. If you want to edit the message, click edit below or 
-                            click print to continue.</p>
+                            with the following message to parents.
                             <div id="message">
-                            <hr>
+                            <hr><div class="row"><br><br></div>
                             Dear Parent,<br><br>
-                            I\'m using a new service called Teach Together to help me connect with my students\' parents.<br><br>
-                            To register for the service, use your smartphone or computer to login to the following website and click the \'Parents\' tab.<br><br>
-                            <b>Website:</b> teachtogether.co<br>
-                            </hr>
+                            I\'m using a new service called Teach Together to help me connect with my students\' parents. 
+                            To register for the service, use your smartphone or computer and visit this website and 
+                            click the \'Parents\' tab.</p>
+                            <br><br>
+                            <b>Website:</b> teachtogether.co <br>
+                            
                             </div>'; 
             ?>
           </p></td></tr></table>

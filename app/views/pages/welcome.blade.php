@@ -4,7 +4,7 @@
     <section id="intro" class="intro">
   <div class="slogan col-md-4 col-md-offset-4 " >
     <div class="slogan" >
-      <h2 >TRANSFORM PARENTS INTO <SPAN style="color:orange">PARTNERS</spam></h2>
+      <h2 style="font-size:300%">TRANSFORM PARENTS INTO <SPAN style="color:orange">PARTNERS</spam></h2>
     </div>
     <div class="page-scroll">
       <a href="#service" class="btn btn-circle">
@@ -105,6 +105,49 @@
 
   <!-- /Section: services -->
 
+
+  <!-- Impact section -->
+
+  <section id="service" class="home-section text-center bg-gray">
+    
+    <div class="heading-about">
+      <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+      
+          <div class="section-heading">
+          <h2>Parent Involvement Matters</h2>
+          <i class="fa fa-2x fa-angle-down"></i>
+
+          </div>
+      
+        </div>
+      </div>
+      </div>
+    </div>
+<div class="container">
+    <div class="row">
+      <div class="col-lg-2 col-lg-offset-5">
+        <hr class="marginbot-50">
+      </div>
+    </div>
+    <div class="row">
+    <div class="container">
+      <div class="col-md-2 col-md-offset-3" > 
+        <img src="https://s3.amazonaws.com/teachtogether.co/assets/img/result.png">
+       </div>
+      <div class="col-md-4 col-md-offset-0" >
+        <p>Thirty years of research shows that when families are involved with their children’s education, 
+          children do better in school. But modern parents have busy lives and often aren't aware of how best
+          to help. With Teach Together, teachers can help and encourage parents to get involved.  </p>
+      </div>
+    
+    </div>
+  </div>
+</div>
+</section>
+<!-- /Impact section -->
+
 <section id="service" class="home-section text-center bg-info">
     
     <div class="heading-about">
@@ -150,48 +193,6 @@
 </div>
 </section>
 
-
-  <!-- Impact section -->
-
-  <section id="service" class="home-section text-center bg-gray">
-    
-    <div class="heading-about">
-      <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-lg-offset-2">
-      
-          <div class="section-heading">
-          <h2>Parent Involvement Matters</h2>
-          <i class="fa fa-2x fa-angle-down"></i>
-
-          </div>
-      
-        </div>
-      </div>
-      </div>
-    </div>
-<div class="container">
-    <div class="row">
-      <div class="col-lg-2 col-lg-offset-5">
-        <hr class="marginbot-50">
-      </div>
-    </div>
-    <div class="row">
-    <div class="container">
-      <div class="col-md-2 col-md-offset-3" > 
-        <img src="https://s3.amazonaws.com/teachtogether.co/assets/img/result.png">
-       </div>
-      <div class="col-md-4 col-md-offset-0" >
-        <p>Thirty years of research shows that when families are involved with their children’s education, 
-          children do better in school. But modern parents have busy lives and often aren't aware of how best
-          to help. With Teach Together, teachers can help and encourage parents to get involved.  </p>
-      </div>
-    
-    </div>
-  </div>
-</div>
-</section>
-<!-- /Impact section -->
 <!-- Section: contact -->
     <section id="contact" class="home-section text-center">
     <div class="heading-contact">

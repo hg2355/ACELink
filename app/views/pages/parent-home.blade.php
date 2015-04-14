@@ -6,7 +6,7 @@
     <div class="heading-about">
         <div class="container">
         
-        <div class="row">
+        <div class="row ol-lg-8 col-lg-offset-2">
         <h2>Welcome,&nbsp;&nbsp;<?php echo $user->first_name?> </h2>
         <i class="fa fa-2x fa-angle-down"></i>
       </div>
@@ -19,7 +19,7 @@
     </div>
 
     </div>
-
+<!--
     <div class="row col-lg-8 col-lg-offset-2">
               <h3> <span class="glyphicon glyphicon-stats  " aria-hidden="true"></span>&nbsp;Your progress</h3>  
 
@@ -38,44 +38,25 @@
         <hr class="marginbot-50">
       </div>
     </div>
+-->
 
+<div class="row">
+      <div class="col-lg-2 col-lg-offset-5">
+         
+      </div></div>
+
+
+      <div class="col-lg-6 col-lg-offset-3 alert alert-warning" role="alert"><br>
+<b><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>&nbsp;</b>&nbsp;
+Below are some activities you can do at home to help <?php 
+            echo $student->first_name; ?> excel at school. <br><br>
+
+</div> 
 
 <div class="row col-lg-8 col-lg-offset-2">
-              <h3> <span class="glyphicon glyphicon-star  " aria-hidden="true"></span>&nbsp;To-Do List</h3>      
+              <h3> <span class="glyphicon glyphicon-star  " aria-hidden="true"></span>&nbsp;Activity List</h3>      
 
   
-      <!-- start of activity box -->
-  <div class="col-lg-8 col-lg-offset-2 alert" role="alert">
-        <div class="activity alert row col-lg-10 col-md-8 col-sm-8 col-lg-offset-1 col-md-offset-2 col-sm-offset-2">
-          <!--  photo -->
-          <div class="activity-img col-lg-4 col-sm-4 col-md-4 col-xs-4">
-          
-          <img src="https://s3.amazonaws.com/teachtogether.co/assets/img/grit.png" class="img-circle" alt="" />
-          <DIV type="button"><br></div>
-            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#invitation">
-  <span class="glyphicon glyphicon-edit" ></span>&nbsp;View </button>
-          </div>
-          <!-- description -->
-          <div class="col-lg-8 col-sm-8 col-md-8 col-xs-8 bg-info">
-        <h4>Invitation</h4>
-        <p> <?php echo $teacher->title.'. '.$teacher->last_name ?> &nbsp;sent you an invitation for a parent teacher conference.
-          </p>
-          
-          </div>
-
-      </div>
-           
-    </div>
-<!-- end of activity box -->
-
-
-
-      <div class="row">
-      <div class="col-lg-2 col-lg-offset-5">
-
-      </div>
-    </div>
-
 
 <!-- start of activity box -->
   <div class="col-lg-8 col-lg-offset-2 alert" role="alert">
@@ -204,34 +185,12 @@
     </div>
 <!-- end of activity box -->
 
-
+  
 <div class="row">
       <div class="col-lg-2 col-lg-offset-5">
          
       </div></div>
-
-
-      <div class="col-lg-8 col-lg-offset-2 alert alert-warning" role="alert"><br>
-<b><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>&nbsp;</b>&nbsp;
-End of your to-do list. Browse the list below for more activities.<br><br>
-
-</div> 
-
-    
-
-
-<div class="row">
-      <div class="col-lg-2 col-lg-offset-5">
-        <hr class="marginbot-50">
-      </div>
-    </div>
-</div>
-
-
-
-
-<div class="row col-lg-8 col-lg-offset-2">
- <h3>Activity List</h3>               
+           
 
 <!-- start of activity box -->
   <div class="col-lg-8 col-lg-offset-2 alert" role="alert">
