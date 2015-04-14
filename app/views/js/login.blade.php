@@ -91,7 +91,7 @@
     });
 
     $("#student_signup").click(function(){
-
+        
         $('#signup_errors').empty();
         $("#signup_alert").addClass('hidden');
     
@@ -144,10 +144,12 @@
         });
     });
 
-    $("#create").click(function(){
+    $("#teacher_signup").click(function(){
         
-        var errorText = $("#error_text").empty();
-        
+        $('#signup_errors').empty();
+        $("#signup_alert").addClass('hidden');
+    
+
         var firstName = $("#first_name").val();
         var lastName = $("#last_name").val();
         var email = $("#signupModal #email").val();
@@ -180,27 +182,19 @@
                     }
 
                     else
-                    {
+                    {   
                         var errors = data.errors;
-                        var msg = '';
                         
                         if(errors)
                         {
                             $.each(errors, function(key, value)
                             {
-                                msg = msg.concat(value).concat("<br>");
+                                $('#signup_errors').append('<li>'+value+'</li>');
                             });
 
-                            errorText.html(msg);
-                            $(".text-danger").removeClass('hidden');
+                            $("#signup_alert").removeClass('hidden');
                         }
 
-                        else
-                        {
-                            msg = data.msg;
-                            errorText.html(msg);
-                            $(".text-danger").removeClass('hidden');
-                        }
                     }
                 },
                 error: function(data) 

@@ -103,51 +103,50 @@
       <button type="button" class="close" data-dismiss="modal">
           <span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button></h2></div>
       <div class="modal-body">
-        <table class="frmTable">
-            <col width="30%">
-            <col width="70%">
-            <tr class="text-danger text-center hidden"><td colspan="2" id="error_text"></td></tr>
-            <tr>
-                <td>Title</td>
-                <td><select id="title" class="form-control">
-                        <option value=""></option>
-                        <option value="Mr">Mr.</option>
-                        <option value="Ms">Ms.</option>
-                        <option value="Mrs">Mrs.</option>
-                </select></td>
-            </tr>
-            <tr>
-                <td>First Name</td>
-                <td><input type="text" id="first_name" class="form-control"></td>
-            </tr>
-            <tr>
-                <td>Last Name</td>
-                <td><input type="text" id="last_name" class="form-control"></td>
-            </tr>
-            <tr>
-                <td>Email</td>
-                <td><input type="text" id="email" class="form-control"></td>
-            </tr>
-            <tr>
-                <td>Grade</td>
-                <td><?php echo Form::select('grade', [''=>'','K'=>'Kindergarten','1'=>'First'], null, ['class'=>'form-control', 'id'=>'grade','placeholder'=>'Select A Grade']); ?></td>
-            </tr>
-            <tr>
-                <td>Zip</td>
-                <td><input type="text" id="zipcode" class="form-control form-control-short"><span id="cityData"/></td>
-            </tr>
-            <tr>
-                <td>School Name</td>
-                <td><input type="text" id="school" class="form-control"></td>
-            </tr>
-        </table>
-      </div>
+        
+        <div id="signup_alert" class="alert alert-danger hidden" role="alert">
+            <ul id="signup_errors">
+            </ul>
+        </div>
+        <form>
+            <div class="form-group">
+                <label>Title</label>
+                <?php $titles = [''=>'Select a title','Mr'=>'Mr','Ms'=>'Ms','Mrs'=>'Mrs']; ?>
+                <?php echo Form::select('title',$titles, null, ['class'=>'form-control','id'=>'title']); ?>
+            </div>
+            <div class="form-group">
+                <label>First Name</label>
+                <input type="text" class="form-control" id="first_name">
+            </div>
+            <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" class="form-control" id="last_name">
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" class="form-control" id="email">
+            </div>
+            <div class="form-group">
+                <label>Grade You are Teaching</label>
+                <?php $grades = [''=>'Select a grade','K'=>'Kindergarten','1'=>'First']; ?>
+                <?php echo Form::select('grade', $grades, null, ['class'=>'form-control','id'=>'grade']); ?>
+            </div>
+            <div class="form-group">
+                <label>Zipcode</label>
+                <input type="text" class="form-control" maxLength=5 id="zipcode">
+            </div>
+            <div class="form-group">
+                <label>School name</label>
+                <input type="text" class="form-control" id="school">
+            </div>
+        </form>
       <div class="modal-footer">
         <span type="button" class="btn btn-default" data-dismiss="modal">Cancel</span>
-        <span id="create" type="button" class="btn btn-success" >Create Account</span>
+        <span id="teacher_signup" type="button" class="btn btn-success" >Create Account</span>
       </div>
     </div>
   </div>
+</div>
 </div>
 <!-- Modal -->
 <div class="modal fade" id="signupSuccessModal" tabindex="-1" role="dialog" aria-labelledby="signupSuccessModalLabel" aria-hidden="true">
