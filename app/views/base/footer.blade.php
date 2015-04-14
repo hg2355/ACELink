@@ -9,7 +9,7 @@
             </a>
           </div>
           </div>
-          <p>&copy;&nbsp;Copyright 2014 - Teach Together - toPoint, LLC. All rights reserved.</p>
+          <p>&copy;&nbsp;Copyright 2015 - Teach Together - toPoint, LLC. All rights reserved.</p>
           <p>Terms of Service | Privacy Policy</p>
         </div>
       </div>  
