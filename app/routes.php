@@ -11,15 +11,21 @@
 |
 */
 
+Route::group(['before'=>'session','namespace' => 'TT\Controllers'],function()
+{
+    Route::get('/login', array('as'=>'login.get','uses'=>'LoginController@getLogin'));
+    
+    Route::post('/login', array('as'=>'login.post','uses'=>'LoginController@postLogin'));
+    Route::post('/teacher',array('as'=>'teacher.post','uses'=>'Teacher\SignUpController@store'));
+    Route::post('/parent',array('as'=>'parent.post','uses'=>'Parent\SignUpController@store'));
+    Route::post('/reset-password', array('as'=>'reset.password.post','uses'=>'PasswordResetController@postReset'));
+
+});
+
 Route::group(['namespace' => 'TT\Controllers'],function() 
 {
     Route::get('/', array('as'=>'welcome','uses'=>'WelcomeController@showWelcome'));
-    Route::get('/login', array('as'=>'login.get','uses'=>'LoginController@getLogin'));
     
-    Route::post('/teacher',array('as'=>'teacher.post','uses'=>'Teacher\SignUpController@store'));
-    Route::post('/parent',array('as'=>'parent.post','uses'=>'Parent\SignUpController@store'));
-    Route::post('/login', array('as'=>'login.post','uses'=>'LoginController@postLogin'));
-    Route::post('/reset-password', array('as'=>'reset.password.post','uses'=>'PasswordResetController@postReset'));
 });
 
 

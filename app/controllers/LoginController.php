@@ -12,7 +12,7 @@ class LoginController extends BaseController {
 
     public function getLogin()
     {
-        return View::make('pages.login')->with('user_type',Session::get('user_type'));
+        return View::make('pages.login')->with('user_type',$user_type);
     }
 
     public function postLogin()

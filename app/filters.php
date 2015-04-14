@@ -33,6 +33,23 @@ App::after(function($request, $response)
 |
 */
 
+Route::filter('session',function()
+{
+    if( ! Session::has('user_type') )
+    {
+        if (Request::ajax())
+		{
+			return Response::make('Nice try', 403);
+        }
+
+		else
+		{
+			return Redirect::route('welcome');
+		}
+
+    }
+});
+
 Route::filter('auth', function()
 {
 	if ( !TT\Auth\Authenticator::auth() )
@@ -47,12 +64,18 @@ Route::filter('auth', function()
 		if (Request::ajax())
 		{
 			return Response::make('Not logged in.', 403);
-		}
+        }
+
 		else
 		{
 			return Redirect::route('login.get');
 		}
-	}
+    }
+
+    else
+    {
+        return Redirect::route('welcome');
+    }
 });
 
 
