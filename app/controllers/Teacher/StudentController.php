@@ -15,11 +15,6 @@ class StudentController extends BaseController {
         $this->teacherService = $teacherService;
     }
 
-	public function show()
-    {
-        return View::make('pages.students')->with('teacher',Authenticator::user());	        
-    }
-
     public function printCodes()
     {
         $input = Input::all();
@@ -28,8 +23,6 @@ class StudentController extends BaseController {
 
         if( $response )
         {
-            //return $this->successResponse();
-            //return $this->getPDFDownload($response);
             return $this->getFileURL($response);
         }
 

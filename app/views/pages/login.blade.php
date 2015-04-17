@@ -1,4 +1,4 @@
 @extends('layout.login')
 @section('content')
-@include('pages.'.$user_type.'-login')
+@include('pages.login.'.$user_type)
 @stop

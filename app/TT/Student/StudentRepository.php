@@ -1,5 +1,6 @@
 <?php namespace TT\Student;
 
+use Sentry;
 use TT\Models\Student;
 use TT\Support\ModelRepository;
 
@@ -14,6 +15,10 @@ class StudentRepository extends ModelRepository
     {
         $this->save($data);
         
+        $studentGroup = Sentry::findGroupByName('Student');
+
+        $this->model->addGroup($studentGroup);
+
         return $this->model;
     }
 }

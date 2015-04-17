@@ -1,5 +1,6 @@
 <?php namespace TT\Parent;
 
+use Sentry;
 use TT\Models\Partner;
 use TT\Support\ModelRepository;
 
@@ -14,6 +15,10 @@ class ParentRepository extends ModelRepository
     {
         $this->save($data);
         
+        $parentGroup = Sentry::findGroupByName('Student');
+
+        $this->model->addGroup($parentGroup);
+
         return $this->model;
     }
 }

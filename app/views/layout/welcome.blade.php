@@ -10,6 +10,6 @@
 @include('base.nav')
 @yield('content')
 @include('js.welcome')
-</body>
 @include('base.footer')
+</body>
 </html>

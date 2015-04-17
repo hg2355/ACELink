@@ -18,7 +18,22 @@ class BaseController extends \Controller {
 			$this->layout = View::make($this->layout);
 		}
     }
+
+    public function flashInfo()
+    {
+        Session::flash('info',$this->message);
+    }
+
+    public function flashWarning()
+    {
+        Session::flash('warning',$this->message);
+    }
     
+    public function flashSuccess()
+    {
+        Session::flash('success',$this->message);
+    }
+
     public function getFileURL($filePath)
     {
         return Response::json(['success'=>0,'url'=>asset($filePath)],200);

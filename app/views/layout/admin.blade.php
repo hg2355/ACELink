@@ -7,11 +7,9 @@
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-custom">
-@include('base.nav')
-<div id="main" class="container">
+<div class="container" id="main">
 @yield('content')
-@include('js.home')
 </div>
-@include('base.footer')
 </body>
+@include('base.footer')
 </html>

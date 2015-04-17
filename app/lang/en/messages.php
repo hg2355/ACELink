@@ -7,5 +7,7 @@ return [
     'wrong_password' => 'Wrong password was given.',
     'password_required' => 'Password is required.',
     'login_required' => 'Login is required.',
-    'valid_login' => ':email has logged in.'
+    'valid_login' => ':email has logged in.',
+    'entity_store_success' => ':name was successfully created.',
+    'entity_store_failure' => 'Failed to create :name.',
 ];

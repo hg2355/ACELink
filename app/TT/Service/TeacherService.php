@@ -161,10 +161,6 @@ class TeacherService
             
             $teacher = $this->teacherRepo->create($teacherData);
             
-            $teacherGroup = Sentry::findGroupByName('Teacher');
-
-            $teacher->addGroup($teacherGroup);
-        
             $school = $this->schoolRepo->findOrCreate($schoolData);
 
             $teacher->schools()->attach($school->id);

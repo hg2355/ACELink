@@ -71,6 +71,12 @@ class ParentService
 
             $parent = $this->parentRepo->create($parentData);
             $student = $this->studentRepo->create($studentData);
+            
+            $parentGroup = Sentry::findGroupByName('Parent');
+            $studentGroup = Sentry::findGroupByName('Student');
+
+            $parent->addGroup($parentGroup);
+            $student->addGroup($studentGroup);
 
             $code = $this->codeRepo->findByCode($studentCode);
             $teacher = $code->teacher();

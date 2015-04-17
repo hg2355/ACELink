@@ -1,4 +1,4 @@
 @extends('layout.home')
 @section('content')
-@include('pages.'.$user_type.'-home')
+@include('pages.home.'.$user_type)
 @stop

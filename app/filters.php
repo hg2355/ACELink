@@ -46,7 +46,6 @@ Route::filter('session',function()
 		{
 			return Redirect::route('welcome');
 		}
-
     }
 });
 
@@ -56,9 +55,9 @@ Route::filter('auth', function()
     {
         if( Route::input('user_type') )
         {
-            $user = Route::input('user_type');
+            $userType = Route::input('user_type');
 
-            Session::put('user_type',$user);
+            Session::put('user_type',$userType);
         }
 
 		if (Request::ajax())
@@ -70,11 +69,6 @@ Route::filter('auth', function()
 		{
 			return Redirect::route('login.get');
 		}
-    }
-
-    else
-    {
-        return Redirect::route('welcome');
     }
 });
 
