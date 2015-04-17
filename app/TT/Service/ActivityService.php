@@ -48,16 +48,13 @@ class ActivityService
             $activity->move($activitiesPath,$activityFileName);
             $description->move($descriptionsPath,$descriptionFileName);
 
-            $format = 'activities/%s';
+            $format = '/activities/%s';
             $relativePath = sprintf($format,$activityFileName);
-            $activityURL = asset($relativePath);
+            $data = array_add($data,'activity_url',$relativePath);
             
-            $format = 'descriptions/%s';
+            $format = '/descriptions/%s';
             $relativePath = sprintf($format,$descriptionFileName);
-            $descriptionURL = asset($relativePath);
-            
-            $data = array_add($data,'activity_url',$activityURL);
-            $data = array_add($data,'description_url',$descriptionURL);
+            $data = array_add($data,'description_url',$relativePath);
             
             $activity = $this->activityRepo->create($data);
     
