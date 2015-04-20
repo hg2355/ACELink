@@ -10,6 +10,9 @@ return [
     'valid_login' => ':email has logged in.',
     'entity_store_success' => ':name was successfully created.',
     'entity_store_failure' => 'Failed to create :name.',
+    'entity_update_success' => ':name was successfully updated.',
+    'entity_update_failure' => 'Failed to update :name.',
     'entity_delete_success' => ':name was successfully deleted.',
     'entity_delete_failure' => 'Failed to delete :name.',
+    'entity_not_found' => ':entity not found.'
 ];

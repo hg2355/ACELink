@@ -4,16 +4,15 @@
           <!--  photo -->
           <div class="activity-img col-lg-4 col-sm-4 col-md-4 col-xs-4">
           
-          <img src="https://s3.amazonaws.com/teachtogether.co/assets/img/grit.png" class="img-circle" alt="" />
-          <DIV type="button">10 PTS</div>
-            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#grit">
-  <span class="glyphicon glyphicon-edit" ></span>&nbsp;Start </button>
+          <img src="URL TO IMAGE" class="img-circle" alt="" />
+          <DIV type="button"><br></div>
+            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#invitation">
+  <span class="glyphicon glyphicon-edit" ></span>&nbsp;View </button>
           </div>
           <!-- description -->
           <div class="col-lg-8 col-sm-8 col-md-8 col-xs-8 bg-info">
-        <h4>CHARACTER SERIES</h4>
-        <p> <?php echo $teacher->title.'. '.$teacher->last_name ?> &nbsp;is asking you to discuss Grit with <?php 
-            echo $student->first_name; ?>.
+        <h4>Invitation</h4>
+        <p> $student->teacher->first_name &nbsp;sent you an invitation for a parent teacher conference.
           </p>
           
           </div>
@@ -22,10 +21,9 @@
            
     </div>
 <!-- end of activity box -->
- <div class="row">
+<!-- start of activity spacing -->
+<div class="row">
       <div class="col-lg-2 col-lg-offset-5">
-
       </div>
-    </div>
-
-
+</div>
+<!-- end of activity spacing -->
