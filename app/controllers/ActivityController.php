@@ -115,8 +115,14 @@ class ActivityController extends BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
-	}
-
+        if( $this->activityService->destroy($id,$this) )
+        {
+            return $this->flashInfo();
+        }
+        else
+        {
+            $this->flashWarning();
+        }
+    }
 
 }

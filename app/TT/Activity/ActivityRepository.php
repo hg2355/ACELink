@@ -10,10 +10,20 @@ class ActivityRepository extends ModelRepository
         $this->model = $activity;
     }
 
+    public function all()
+    {
+        return $this->model->all();
+    }
+
     public function create(array $data)
     {        
         $this->save($data);
 
         return $this->model;
+    }
+
+    public function destroy($id)
+    {
+        Activity::destroy($id);
     }
 }

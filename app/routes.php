@@ -26,17 +26,14 @@ Route::group(['namespace' => 'TT\Controllers'],function()
 {
     Route::get('/', array('as'=>'welcome','uses'=>'WelcomeController@showWelcome'));
     Route::get('/admin',array('as'=>'admin','uses'=>'AdminController@show'));   
-});
+    });
 
 Route::group(['before' => 'auth', 'namespace' => 'TT\Controllers'], function()
 {
     Route::get('/logout',array('as'=>'logout.get','uses'=>'LoginController@getLogout'));
     Route::get('/home',array('as'=>'home','uses'=>'HomeController@showHome'));
     Route::get('/{user_type}/home',array('as'=>'home.user','uses'=>'HomeController@getHome'));
-    Route::get('/activity/create',array('as'=>'activity.create','uses'=>'ActivityController@create'));
 
     Route::post('/print-codes',array('as'=>'print.codes','uses'=>'Teacher\StudentController@printCodes'));
-    Route::post('/activity',array('as'=>'activity.store','uses'=>'ActivityController@store'));
-
-
+    Route::resource('activity','ActivityController');
 });

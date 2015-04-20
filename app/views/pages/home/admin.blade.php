@@ -16,7 +16,25 @@ else if( Session::has('success') )
 }
 ?>
 <a href="/activity/create" class="btn btn-large btn-danger">Upload New Activity</a>
-<table class="table table-striped table-bordered">
+<table class="table table-striped table-bordered" style="margin-top: 15px">
+<tr>
+    <td>Title</td>
+    <td>Actions</td>
+<?php 
+
+foreach($activities as $activity)
+{
+    echo '<tr id="'.$activity->title.'">';
+    echo '<td>'.$activity->title.'</td>';
+    
+    $deleteString = "'".$activity->id."'".",'activity','".$activity->title."'";
+
+    echo '<td><a href="'.URL::route('activity.edit',[$activity->id]).'" class="btn btn-warning">Edit</a><a href="#" data-token="'.csrf_token().'" class="btn btn-danger" style="margin-left: 15px" onclick="destroy('.$deleteString.')">Delete</a></td>';
+    echo '</tr>';
+}
+?>
+</tr>
 </table>
 </div>
 </section>
+

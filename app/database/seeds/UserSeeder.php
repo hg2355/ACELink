@@ -12,6 +12,7 @@ class UserSeeder extends Seeder {
         $this->command->info('Importing users...');
         
         $admin = Sentry::register([
+                                    'first_name'=>'Admin',
                                     'email'=>'admin@tt.co',
                                     'password'=>$_ENV['ADMIN_PWD'],
                                     'activated'=>1,

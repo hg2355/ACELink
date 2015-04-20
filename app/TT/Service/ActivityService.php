@@ -16,6 +16,19 @@ class ActivityService
         $this->activityRepo = $activityRepo;
     }
 
+    public function all()
+    {
+        try
+        {
+            return $this->activityRepo->all();
+        }
+
+        catch(\Exception $ex)
+        {
+            \Log::error($ex);
+        }
+    }
+
     public function create($data, $listener)
     {
         if( is_null($listener) )
@@ -71,6 +84,49 @@ class ActivityService
             \Log::error($ex);
             \DB::rollback();
             $listener->setMsg('messages.entity_store_failure',['name'=>$data['title']]);
+            return false;
+        }
+    }
+
+    public function destroy($id,$listener = null)
+    {   
+        $activity = null;
+
+        try
+        {
+            $activity = $this->find($id);
+
+            $publicPath = public_path();
+            
+            $format = '%s%s';
+            $relativePath = $activity->activity_url;
+            $activityPath = sprintf($format,$publicPath,$relativePath);
+            
+            $relativePath = $activity->description_url;
+            $descriptionPath = sprintf($format,$publicPath,$relativePath);
+
+            \File::delete([$activityPath,$descriptionPath]);
+            
+            $this->activityRepo->destroy($id);
+            
+            if( ! is_null($listener) )
+            {
+                $listener->setMsg('messages.entity_delete_success',['name'=>$activity->title]);
+            }
+
+            return true;
+        }
+
+        catch(\Exception $ex)
+        {
+            \Log::error($ex);
+
+            if( ! is_null($listener) )
+            {
+                $listener->setMsg('messages.entity_delete_failure',['name'=>$activity->title]);
+            }
+
+
             return false;
         }
     }
