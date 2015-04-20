@@ -22,6 +22,12 @@ class ActivityRepository extends ModelRepository
         return $this->model;
     }
 
+    public function update(Activity $activity, array $data)
+    {
+        $activity->fill($data);
+        $activity->save();
+    }
+
     public function destroy($id)
     {
         Activity::destroy($id);

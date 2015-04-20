@@ -7,6 +7,7 @@ use BaseController;
 use TT\Auth\Authenticator;
 use TT\Service\ActivityService;
 use TT\Activity\ActivityCreateForm;
+use TT\Activity\ActivityUpdateForm;
 
 class ActivityController extends BaseController {
 
@@ -91,7 +92,9 @@ class ActivityController extends BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+        $activity = $this->activityService->find($id);
+
+        return View::make('pages.activity.edit')->with('activity',$activity);
 	}
 
 
@@ -103,7 +106,29 @@ class ActivityController extends BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$form = new ActivityUpdateForm($id);
+        $input = Input::all();
+
+        if( ! $form->isValid($input) )
+        {
+            return Redirect::back()->withInput()->withErrors($form->getValidator()->errors());
+        }
+
+        else
+        {
+            if( $this->activityService->update($id,$input,$this) )
+            {
+                $this->flashSuccess();
+                return Redirect::route('home');
+            }
+
+            else
+            {
+                $this->flashWarning();
+                return Redirect::route('home');
+            }
+        }
+
 	}
 
 

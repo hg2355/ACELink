@@ -20,7 +20,6 @@
 
     </div>
     
-    <?php include(public_path().'/descriptions/activity-0-test.php') ?> 
 <!-- END OF ACTIVITIES SECTION -->
 
 </section>
@@ -66,12 +65,8 @@
       <button type="button" class="close" data-dismiss="modal">
           <span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button></h2></div>
       <div class="modal-body"><center>
-
-
-
       </center>
       </div>
-   
     </div>
   </div>
 </div>
