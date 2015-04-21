@@ -80,7 +80,10 @@ class ActivityController extends BaseController {
 	 */
 	public function show($id)
 	{
-		//
+        $activity = $this->activityService->find($id);
+        
+        return View::make('pages.activity.show')->with('activity',$activity)
+                                                ->with('user',Authenticator::user());
 	}
 
 
@@ -148,6 +151,26 @@ class ActivityController extends BaseController {
         {
             $this->flashWarning();
         }
+    }
+
+    public function complete($id)
+    {
+        $user = Authenticator::user();
+        $activity = $this->activityService->find($id);
+
+        if( $this->activityService->complete($activity,$user,$this) )
+        {
+            $this->flashSuccess();
+
+        }
+
+        else
+        {
+            $this->flashWarning();
+        }
+
+        
+        return Redirect::route('home');
     }
 
 }

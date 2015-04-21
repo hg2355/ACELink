@@ -28,12 +28,12 @@
 </div>
 
 <div class="form-group">
-    <label> Description </label>
+    <label> Activity Box </label>
     <?php echo Form::file('description',['id'=>'description','class'=>'form-control','accept'=>'.php']) ?>
 </div>
 
 <div class="form-group">
-    <label> Activity </label>
+    <label> Activity Page </label>
     <?php echo Form::file('activity',['id'=>'activity','class'=>'form-control','accept'=>'.php']) ?>
 </div>
 

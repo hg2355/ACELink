@@ -5,21 +5,50 @@
     <div class="heading-about">
         <div class="container">
         
-        <div class="row ol-lg-8 col-lg-offset-2">
+        <div class="row ol-lg-8 col-lg-offset-2 center-block">
         <h2>Welcome,&nbsp;&nbsp;<?php echo $user->first_name?> </h2>
         <i class="fa fa-2x fa-angle-down"></i>
       </div>
       </div>
+<?php 
+if( Session::has('warning') )
+{
+    echo '<div class="alert alert-warning" role="alert">'.Session::get('warning').'</div>';
+}
+else if( Session::has('info') )
+{
+   echo '<div class="alert alert-info" role="alert">'.Session::get('info').'</div>';
+}
+else if( Session::has('success') )
+{
+   echo '<div class="alert alert-success" role="alert">'.Session::get('success').'</div>';
+}
 
+if( count($activities) === 0 )
+{
+    echo '<div class="alert alert-info" role="alert">No more activities at the moment.</div>';
+}
+?>
+  
 <!-- START OF ACTIVITIES SECTION -->  
     <div class="row">
       <div class="col-lg-2 col-lg-offset-5">
         <hr class="marginbot-50">
       </div>
     </div>
-
-    </div>
     
+    </div>
+
+    <?php 
+            foreach($activities as $activity)
+            {
+                $format = '%s%s';
+                
+                $path = sprintf($format,public_path(),$activity->description_url);
+
+                include($path);
+            }
+     ?>
 <!-- END OF ACTIVITIES SECTION -->
 
 </section>
