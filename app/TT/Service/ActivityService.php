@@ -4,6 +4,7 @@ use App;
 use View;
 use Sentry;
 use BaseController;
+use TT\Models\User;
 use TT\Models\Activity;
 use TT\Auth\Authenticator;
 use TT\Activity\ActivityRepository;
@@ -103,7 +104,7 @@ class ActivityService
             \DB::beginTransaction();
 
 
-            if( array_key_exists('activity',$data) )
+            if( ! empty($data['activity']) )
             {
                 
                 $format = '%s/%s';
@@ -134,7 +135,7 @@ class ActivityService
             }
             
 
-            if( array_key_exists('description',$data) )
+            if( ! empty($data['description']) )
             {
                 
                 $format = '%s/%s';
@@ -230,5 +231,64 @@ class ActivityService
     public function find($id)
     {
         return $this->activityRepo->getById($id);
+    }
+
+    public function getActivities(User $user)
+    {
+        try
+        {
+            $student = $user->students()->first();
+
+            $studentActivities = $student->activities()->lists('id');
+
+            if( empty($studentActivities) )
+                return $this->find([1]);
+            
+            $activities = $this->all()->lists('id');
+
+            $activities = array_diff($activities,$studentActivities);
+            
+            sort($activities);
+            
+            $activities = array_slice($activities,0,3);
+
+            return $this->find($activities);
+        }
+
+        catch(\Exception $ex)
+        {
+            \Log::error($ex);
+
+            return [];
+        }
+    }
+
+    public function complete(Activity $activity, User $user, BaseController $listener)
+    {
+        try
+        {
+            \DB::beginTransaction();
+
+            $student = $user->students()->first();
+
+            $student->activities()->attach($activity->id); 
+
+            \DB::commit();
+
+            $listener->setMsg('messages.activity_complete',['name'=>$activity->title]);
+
+            return true;
+        }
+
+        catch(\Exception $ex)
+        {
+            \Log::error($ex);
+            
+            \DB::rollback();
+            
+            $listener->setMsg('messages.activity_complete',['name'=>$activity->title]);
+
+            return false;
+        }
     }
 }

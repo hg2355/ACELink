@@ -14,5 +14,6 @@ return [
     'entity_update_failure' => 'Failed to update :name.',
     'entity_delete_success' => ':name was successfully deleted.',
     'entity_delete_failure' => 'Failed to delete :name.',
-    'entity_not_found' => ':entity not found.'
+    'entity_not_found' => ':entity not found.',
+    'activity_complete'=>':name complete.'
 ];

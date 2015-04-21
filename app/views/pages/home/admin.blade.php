@@ -14,7 +14,10 @@ else if( Session::has('success') )
 {
    echo '<div class="alert alert-success" role="alert">'.Session::get('success').'</div>';
 }
+
 ?>
+
+
 <a href="/activity/create" class="btn btn-large btn-danger">Upload New Activity</a>
 <table class="table table-striped table-bordered" style="margin-top: 15px">
 <tr>

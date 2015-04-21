@@ -34,11 +34,25 @@ class HomeController extends BaseController {
                     ->with('activities',$activities);
         }
 
+        else if( strcmp($userType,'parent') === 0)
+        {
+            $user = Authenticator::user();
+
+            $activities = $this->activityService->getActivities($user);
+            
+            return $view
+                    ->with('user_type',Session::get('user_type'))
+                    ->with('user',Authenticator::user())
+                    ->with('activities',$activities);
+        }
+
         else
+        {
             return $view
                     ->with('user_type',Session::get('user_type'))
                     ->with('user',Authenticator::user());
-
+             
+        }    
     }
     
 }

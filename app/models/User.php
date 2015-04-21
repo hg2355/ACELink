@@ -64,4 +64,9 @@ class User extends CartalystUser
         else
             return $this->belongsToMany('TT\Models\Student','teachers_students','teacher_id','student_id');
     }
+
+    public function activities()
+    {
+        return $this->belongsToMany('TT\Models\Activity','users_activities','user_id','activity_id');
+    }
 }

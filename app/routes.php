@@ -36,4 +36,6 @@ Route::group(['before' => 'auth', 'namespace' => 'TT\Controllers'], function()
 
     Route::post('/print-codes',array('as'=>'print.codes','uses'=>'Teacher\StudentController@printCodes'));
     Route::resource('activity','ActivityController');
+
+    Route::get('/activity/{id}/complete',array('as'=>'activity.complete','uses'=>'ActivityController@complete'));
 });
