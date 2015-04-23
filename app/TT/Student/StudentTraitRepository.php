@@ -1,5 +1,6 @@
 <?php namespace TT\Student;
 
+use TT\Models\Student;
 use TT\Models\StudentTrait;
 use TT\Support\ModelRepository;
 
@@ -21,5 +22,12 @@ class StudentTraitRepository extends ModelRepository
     {
         $studentTrait->fill($data);
         $studentTrait->save();        
+    }
+
+    public function findByStudent(Student $student)
+    {
+        $studentTrait = StudentTrait::where('id','=',$student->traits_id)->get()->first();
+
+        return $studentTrait;
     }
 }

@@ -276,7 +276,8 @@ class ActivityService
 
             $student->activities()->attach($activity->id); 
 
-            $traits = $student->traits();
+            $traits = $this->studentTraitRepo->findByStudent($student);
+
             $totalTime = $traits->activity_total_time;
 
             $totalTime += $activity->time;
@@ -296,7 +297,7 @@ class ActivityService
             
             \DB::rollback();
             
-            $listener->setMsg('messages.activity_complete',['name'=>$activity->title]);
+            $listener->setMsg('messages.activity_failure',['name'=>$activity->title]);
 
             return false;
         }
