@@ -53,4 +53,5 @@ class HomeController extends BaseController {
                     ->with('user',Authenticator::user());
              
         }
-    }    
+    }
+}    
