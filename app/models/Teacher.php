@@ -1,10 +1,10 @@
 <?php namespace TT\Models;
 
-use TT\Traits\TeacherTrait;
+use TT\Traits\UserTeacherTrait;
 
 class Teacher extends User
 {
-    use TeacherTrait;
+    use UserTeacherTrait;
 
     protected $fillable = [ 'first_name',
                             'last_name',
@@ -25,10 +25,6 @@ class Teacher extends User
         parent::fill($fillable);
     }
 
-    public function traits()
-    {
-        return $this->morphTo();
-    }
     public function schools()
     {
         return $this->belongsToMany('TT\Models\School','teachers_schools');

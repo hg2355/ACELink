@@ -34,15 +34,33 @@ class ParentService
             $studentFullName = array_pull($data,'student_fullname');
 
             $index = strpos($parentFullName,' ');
-            
-            $parentFirstName = substr($parentFullName,0,$index);
-            $parentLastName = substr($parentFullName,$index+1);
+
+            if( $index <= 0 )
+            {
+                $parentFirstName = $parentFullName;
+                $parentLastName = '';
+            }
+
+            else
+            {
+                $parentFirstName = substr($parentFullName,0,$index);
+                $parentLastName = substr($parentFullName,$index+1);
+            }
 
             $index = strpos($studentFullName,' ');
-            
-            $studentFirstName = substr($studentFullName,0,$index);
-            $studentLastName = substr($studentFullName,$index+1);
-            
+
+            if( $index <= 0 )
+            {
+                $studentFirstName = $studentFullName;
+                $studentLastName = '';
+            }
+
+            else
+            {
+                $studentFirstName = substr($studentFullName,0,$index);
+                $studentLastName = substr($studentFullName,$index+1);
+            }
+
             $parentEmail = $data['email'];
             $relation = $data['relationship'];
             $studentCode = $data['student_code'];
@@ -64,10 +82,13 @@ class ParentService
 
             $studentTraitData['student_code'] = $studentCode;
 
-            $this->studentTraitRepo->create($studentTraitData);
+            $trait = $this->studentTraitRepo->create($studentTraitData);
+
+
 
             $studentData['first_name'] = $studentFirstName;
             $studentData['last_name'] = $studentLastName;
+            $studentData['traits_id'] = $trait->id;
 
             $parent = $this->parentRepo->create($parentData);
             $student = $this->studentRepo->create($studentData);

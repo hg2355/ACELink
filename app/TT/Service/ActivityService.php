@@ -8,14 +8,17 @@ use TT\Models\User;
 use TT\Models\Activity;
 use TT\Auth\Authenticator;
 use TT\Activity\ActivityRepository;
+use TT\Student\StudentTraitRepository;
 
 class ActivityService 
 {
     private $activityRepo = null;
+    private $studentTraitRepo = null;
 
-    public function __construct(ActivityRepository $activityRepo)
+    public function __construct(ActivityRepository $activityRepo, StudentTraitRepository $studentTraitRepo)
     {
         $this->activityRepo = $activityRepo;
+        $this->studentTraitRepo = $studentTraitRepo;
     }
 
     public function all()
@@ -242,7 +245,7 @@ class ActivityService
             $studentActivities = $student->activities()->lists('id');
 
             if( empty($studentActivities) )
-                return $this->find([1]);
+                return [$this->activityRepo->getFirst()];
             
             $activities = $this->all()->lists('id');
 
@@ -272,6 +275,13 @@ class ActivityService
             $student = $user->students()->first();
 
             $student->activities()->attach($activity->id); 
+
+            $traits = $student->traits();
+            $totalTime = $traits->activity_total_time;
+
+            $totalTime += $activity->time;
+
+            $this->studentTraitRepo->update($traits,['activity_total_time'=>$totalTime]);
 
             \DB::commit();
 

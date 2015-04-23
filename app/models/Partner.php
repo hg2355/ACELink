@@ -1,11 +1,11 @@
 <?php namespace TT\Models;
 
-use TT\Traits\ParentTrait;
+use TT\Traits\UserParentTrait;
 use Illuminate\Database\Eloquent\SoftDeletingTrait;
 
 class Partner extends User
 {
-    use ParentTrait;
+    use UserParentTrait;
 
     protected $fillable = [ 'first_name',
                             'last_name',
