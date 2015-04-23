@@ -245,7 +245,7 @@ class ActivityService
             $studentActivities = $student->activities()->lists('id');
 
             if( empty($studentActivities) )
-                return [$this->activityRepo->getFirst()];
+                return $this->activityRepo->getFirst();
             
             $activities = $this->all()->lists('id');
 
