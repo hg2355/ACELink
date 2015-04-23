@@ -41,16 +41,16 @@ abstract class ModelRepository
         return $model;
     }
 
-    public function getNew($attributes = array())
+    private function getNew($attributes = array())
     {
-        return $this->model->newInstance($attributes);
+        $this->model = $this->model->newInstance($attributes);
     }
 
 	public function push(Model $data)
     {
       	$data->push(); 
     }
-    
+
     protected function save($data)
     {
         if ($data instanceOf Model) {
@@ -73,6 +73,7 @@ abstract class ModelRepository
 
     protected function storeArray($data)
     {   
+        $this->getNew($data);
         $this->model->fill($data);
         return $this->model->save();
     }

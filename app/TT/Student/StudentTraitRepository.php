@@ -16,4 +16,10 @@ class StudentTraitRepository extends ModelRepository
 
         return $this->model;
     }
+
+    public function update(StudentTrait $studentTrait, array $data)
+    {
+        $studentTrait->fill($data);
+        $studentTrait->save();        
+    }
 }

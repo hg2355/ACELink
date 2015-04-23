@@ -32,4 +32,9 @@ class ActivityRepository extends ModelRepository
     {
         Activity::destroy($id);
     }
+
+    public function getFirst()
+    {
+        return Activity::where('id','>','0')->first();
+    }
 }

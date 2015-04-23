@@ -1,11 +1,11 @@
 <?php namespace TT\Models;
 
-use TT\Traits\StudentTrait;
+use TT\Traits\UserStudentTrait;
 use Illuminate\Database\Eloquent\SoftDeletingTrait;
 
 class Student extends User
 {
-    use StudentTrait;
+    use UserStudentTrait;
 
     protected $fillable = [ 'first_name',
                             'last_name',
