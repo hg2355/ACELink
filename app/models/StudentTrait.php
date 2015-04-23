@@ -6,5 +6,5 @@ class StudentTrait extends \Eloquent
 
     public $timestamps = false;
 
-    protected $fillable = ['student_code','total_activity_time'];
+    protected $fillable = ['student_code','activity_total_time'];
 }
