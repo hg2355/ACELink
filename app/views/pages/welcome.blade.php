@@ -4,7 +4,8 @@
     <section id="intro" class="intro">
   <div class="slogan col-md-4 col-md-offset-4 " >
     <div class="slogan" >
-      <h2 style="font-size:300%">TRANSFORM PARENTS INTO <SPAN style="color:orange">PARTNERS</spam></h2>
+      <h2 style="font-size:300%"><br>
+        TRANSFORM PARENTS INTO <SPAN style="color:orange">PARTNERS</spam></h2>
     </div>
     <div class="page-scroll">
       <a href="#service" class="btn btn-circle">
@@ -147,7 +148,7 @@
 </div>
 </section>
 <!-- /Impact section -->
-
+ <!--
 <section id="service" class="home-section text-center bg-info">
     
     <div class="heading-about">
@@ -165,6 +166,8 @@
       </div>
       </div>
     </div>
+
+   
 <div class="container">
     <div class="row">
       <div class="col-lg-2 col-lg-offset-5">
@@ -191,9 +194,17 @@
     </div>
   </div>
 </div>
+
+
 </section>
 
+-->
+
 <!-- Section: contact -->
+
+
+
+<!--
     <section id="contact" class="home-section text-center">
     <div class="heading-contact">
       <div class="container">
@@ -263,28 +274,12 @@
                 </form>
             </div>
         </div>
-    <!--
-    <div class="col-lg-4">
-      <div class="widget-contact">
-          <strong>We're on social networks</strong><br>
-                        <ul class="company-social">
-                            <li class="social-facebook"><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                            <li class="social-twitter"><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                            <li class="social-dribble"><a href="#" target="_blank"><i class="fa fa-dribbble"></i></a></li>
-                            <li class="social-google"><a href="#" target="_blank"><i class="fa fa-google-plus"></i></a></li>
-                        </ul> 
-        </address>          
-      
-      </div>  
-    </div>
 
-  -->
 
     </div>  
 
     </div>
   </section>
 
-  
-  <!-- /Section: contact -->
+-->
 @stop

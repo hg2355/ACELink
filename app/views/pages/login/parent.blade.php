@@ -121,7 +121,9 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h2 class="modal-title" id="signupSuccessModalLabel">Congratulations! You have registered a new student. Check your email for login details.</h2>
+        <h2 class="modal-title" id="signupSuccessModalLabel">Registration</h2>
+        <div class="modal-body">
+          <p class="booktext">Check your email for login details.</p>
       </div>
       <div class="modal-footer">
         <span type="button" class="btn btn-success" data-dismiss="modal">OK</span>
