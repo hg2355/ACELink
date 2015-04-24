@@ -73,7 +73,9 @@ class ActivityService
             $data = array_add($data,'description_url',$relativePath);
             
             $activity = $this->activityRepo->create($data);
-    
+
+            \DB::table('activities_ratings')->insert(['activity_id'=>$activity->id]);
+
             \DB::commit();
 
             $listener->setMsg('messages.entity_store_success',['name'=>$data['title']]);
@@ -214,6 +216,8 @@ class ActivityService
                 $listener->setMsg('messages.entity_delete_success',['name'=>$activity->title]);
             }
 
+            \DB::table('activities_ratings')->where('activity_id','=',$id)->delete();
+
             return true;
         }
 
@@ -245,7 +249,7 @@ class ActivityService
             $studentActivities = $student->activities()->lists('id');
 
             if( empty($studentActivities) )
-                return [$this->activityRepo->getFirst()];
+                return $this->activityRepo->getFirst();
             
             $activities = $this->all()->lists('id');
 
@@ -266,13 +270,34 @@ class ActivityService
         }
     }
 
-    public function complete(Activity $activity, User $user, BaseController $listener)
+    public function complete(Activity $activity, array $data, User $user, BaseController $listener)
     {
         try
         {
+            $student = $user->students()->first();
+
+            
+            if( $activity->id == 1)
+            {
+                $student->activities()->attach($activity->id); 
+                $listener->setMsg('messages.activity_complete',['name'=>$activity->title]);
+
+                return true;
+            }
+
+            $rating = $data['rating'];
+            $appropriate = $data['appropriate'];
+            $experience = $data['experience'];
+
             \DB::beginTransaction();
 
-            $student = $user->students()->first();
+            $survey = \DB::table('activities_surveys')->where('activity_id','=',$activity->id)->where('parent_id','=',$user->id)->first();
+
+            if( ! is_null($survey) )
+            {
+                $listener->setMsg('messages.activity_already_rated');
+                return false;
+            }
 
             $student->activities()->attach($activity->id); 
 
@@ -283,6 +308,16 @@ class ActivityService
             $totalTime += $activity->time;
 
             $this->studentTraitRepo->update($traits,['activity_total_time'=>$totalTime]);
+
+
+            \DB::table('activities_ratings')->where('activity_id','=',$activity->id)->increment('count');
+            \DB::table('activities_ratings')->where('activity_id','=',$activity->id)->increment('total',$rating);
+            \DB::table('activities_surveys')->insert([
+                                                        'activity_id'=>$activity->id,
+                                                        'parent_id'=>$user->id,
+                                                        'q1'=>$experience,
+                                                        'q2'=>$appropriate
+                                                     ]);
 
             \DB::commit();
 

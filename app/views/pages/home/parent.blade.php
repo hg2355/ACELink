@@ -5,7 +5,7 @@
     <div class="heading-about">
         <div class="container">
         
-        <div class="row ol-lg-8 col-lg-offset-2 center-block">
+        <div class="row col-lg-8 col-lg-offset-2 col-sm-8 col-sm-offset-2">
         <h2>Welcome,&nbsp;&nbsp;<?php echo $user->first_name?> </h2>
         <i class="fa fa-2x fa-angle-down"></i>
       </div>

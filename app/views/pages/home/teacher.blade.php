@@ -40,7 +40,8 @@
    <div class="row col-lg-6 col-lg-offset-3 bg-info collapse" id="codes">
                    
 <p class="col-lg-6 col-lg-offset-3 bg-info"><br>
-<b><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>&nbsp;</b>To register parents, send a note home that gives them the registration info. You can automatically print
+<b><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>&nbsp;</b>To register parents, send a note home that gives them the registration info. 
+You can automatically print
 parent notes using the button below.<br><br>
 
 <button type="button" class="btn btn-info" data-toggle="modal" data-target="#StudentCodes">
@@ -52,7 +53,9 @@ parent notes using the button below.<br><br>
       <Br><br><br>
     </div>
 <div class="row">
-        <h3>Active Students*</h3>
+       <h3>Active Students&nbsp;
+        <span class="glyphicon glyphicon-info-sign" data-toggle="modal" data-target="#parentsignup" 
+        aria-hidden="true"></span></h3>
         
       </div>
 <div class="row">
@@ -60,32 +63,42 @@ parent notes using the button below.<br><br>
 <div class="col-lg-8 col-lg-offset-2">
    
 <div class="container-fluid" id="dispData">
-    <table class="table table-bordered sttable table-striped">
+     <table class="table table-bordered sttable table-striped">
         
-        <col width="30%">
-        <col width="70%"
+        <col width="25%">
+        <col width="60%">
+        <col width="15%">
                 <thead>
                 <tr>
             <th style="vertical-align:bottom">Student Name</th>
             <th style="vertical-align:bottom">Parent Info</th>
+            <th style="vertical-align:bottom">Time Spent</th>
         </tr></thead>
         <tbody >
                 <?php $students = $user->students()->get() ?>              
                 @foreach($students as $student)
                 <tr>
-					
+          
                     <td style="text-align:left; vertical-align:middle"> 
                       {{ $student->fullname }} </td>
                     <?php $relationship = $student->partners()->first()->relationship ?>
                     <td style="text-align:left; vertical-align:middle"> 
                       {{ $student->fullname }}'s {{ $relationship }} has signed up successfully.</td>
+                      <td style="text-align:left; vertical-align:middle"> 
+                      <!--
+
+                      Insert code here to get time spent per parent over their entire lifetime on the website.
+                      Later on we may need to change this to the "past week" or "past month" etc.
+
+                    -->
+
+                  </td> 
                 @endforeach
                 
         </tbody>
     </table>
 
-    *When parents have registered, their information shows up in the active students list. If parents do not register,
-    please follow up with email, phone call or text to support them with the sign-up process.
+    
 </div>
     </div>
   </div>
@@ -141,29 +154,6 @@ parent notes using the button below.<br><br>
 -->
 </section>
 
-<div class="modal fade" id="EditStudent" tabindex="-1" role="dialog" aria-labelledby="NotesModalLabel" aria-hidden="true">
-   <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-
-        <h2 class="modal-title" id="signupModalLabel">Notes App
-      <button type="button" class="close" data-dismiss="modal">
-          <span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button></h2></div>
-      <div class="modal-body">
-        <table>
-          <tr><td><img src="https://s3.amazonaws.com/teachtogether.co/assets/img/youtube.png" alt="Teacher Explains the App"></td></tr>
-          <tr><td>
-          <p><br><b>Description</b><br>
-        This app allows teachers to view parent activity logs and send parents customized notes of recognition or encouragement.
-</p></td></tr></table>
-      </div>
-      <div class="modal-footer">
-        <span type="button" class="btn btn-default" data-dismiss="modal">Cancel</span>
-        <span type="button" class="btn btn-success" onclick="location.href='">Install App</span>
-      </div>
-    </div>
-  </div>
-</div>
 
 
 <div class="modal fade" id="StudentCodes" tabindex="-1" role="dialog" aria-labelledby="NotesModalLabel" aria-hidden="true">
@@ -181,7 +171,7 @@ parent notes using the button below.<br><br>
             <?php 
                     echo 'How many students do you have?&nbsp;&nbsp;<input id="student_count" value="1" type="number" min="1" step"1">
                             <br>
-                            <p>The note to parents will include information to register (webiste URL and special codes) 
+                            <p>The note to parents will include information to register (website URL and special codes) 
                             with the following message to parents.
                             <div id="message">
                             <hr><div class="row"><br><br></div>
@@ -199,6 +189,23 @@ parent notes using the button below.<br><br>
       <div class="modal-footer">
         <span type="button" class="btn btn-default" data-dismiss="modal">Cancel</span>
         <span id="print_codes" type="button" class="btn btn-success" >Print Codes</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="parentsignup" tabindex="-1" role="dialog" aria-labelledby="NotesModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+
+      </div>
+      <div class="modal-body">
+       <p class="booktext">When parents have registered, their information shows up in the active students list. If parents do not register,
+    please follow up with email, phone call or text to support them with the sign-up process.</p>
+      </div>
+      <div class="modal-footer">
+        <span type="button" class="btn btn-default" data-dismiss="modal">Got It</span>
       </div>
     </div>
   </div>

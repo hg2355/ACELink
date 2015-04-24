@@ -35,6 +35,7 @@ App::after(function($request, $response)
 
 Route::filter('session',function()
 {
+    
     if( ! Session::has('user_type') )
     {
         if (Request::ajax())
@@ -47,6 +48,12 @@ Route::filter('session',function()
 			return Redirect::route('welcome');
 		}
     }
+
+    if( TT\Auth\Authenticator::auth() )
+    {
+        return Redirect::route('home');
+    }
+
 });
 
 Route::filter('auth', function()

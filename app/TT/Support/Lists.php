@@ -16,5 +16,23 @@ class Lists
                 'Grandfather'=>'Grandfather'
                 ];
     }
-    
+
+    public static function confirm()
+    {
+        return [
+                ''=>'',
+                1=>'Yes',
+                0=>'No'
+                ];
+    }
+
+    public static function experience()
+    {
+        return [
+                ''=>'',
+                1=>'Fun',
+                0=>'Boring'
+                ];
+    }
+
 }

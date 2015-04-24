@@ -35,6 +35,8 @@ class ActivityRepository extends ModelRepository
 
     public function getFirst()
     {
-        return Activity::where('id','>','0')->first();
+        $activity =  Activity::where('id','>','0')->first();
+
+        return is_null($activity) ? [] : [$activity];
     }
 }

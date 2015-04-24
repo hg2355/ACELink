@@ -18,7 +18,7 @@ class HomeController extends BaseController {
         return $this->getHome();   
     }
 
-    private function getHome()
+    public function getHome()
     {
         $userType = Session::get('user_type');
 
@@ -52,7 +52,6 @@ class HomeController extends BaseController {
                     ->with('user_type',Session::get('user_type'))
                     ->with('user',Authenticator::user());
              
-        }    
+        }
     }
-    
-}
+}    

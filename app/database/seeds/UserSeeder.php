@@ -40,6 +40,7 @@ class UserSeeder extends Seeder {
             $sophie = $teacherRepo->create([
                                         'first_name'=>'Sophie',
                                         'last_name'=>'Nazerian',
+                                        'title'=>'Ms',
                                         'email'=>'sn2595@tc.columbia.edu',
                                         'password'=>'letmein1',
                                         'activated'=>1,
@@ -51,6 +52,7 @@ class UserSeeder extends Seeder {
             $harpreet = $teacherRepo->create([
                                         'first_name'=>'Harpreet',
                                         'last_name'=>'Gill',
+                                        'title'=>'Mr',
                                         'email'=>'hg2355@columbia.edu',
                                         'password'=>'letmein1',
                                         'activated'=>1,
@@ -63,6 +65,7 @@ class UserSeeder extends Seeder {
             $thea = $teacherRepo->create([
                                         'first_name'=>'Thea',
                                         'last_name'=>'Hogarth',
+                                        'title'=>'Ms',
                                         'email'=>'teh2115@tc.columbia.edu',
                                         'password'=>'letmein1',
                                         'activated'=>1,

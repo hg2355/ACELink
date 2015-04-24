@@ -14,19 +14,20 @@
 Route::group(['before'=>'session','namespace' => 'TT\Controllers'],function()
 {
     Route::get('/login', array('as'=>'login.get','uses'=>'LoginController@getLogin'));
-    
     Route::post('/login', array('as'=>'login.post','uses'=>'LoginController@postLogin'));
+
     Route::post('/teacher',array('as'=>'teacher.post','uses'=>'Teacher\SignUpController@store'));
     Route::post('/parent',array('as'=>'parent.post','uses'=>'Parent\SignUpController@store'));
     Route::post('/reset-password', array('as'=>'reset.password.post','uses'=>'PasswordResetController@postReset'));
 
 });
 
+
 Route::group(['namespace' => 'TT\Controllers'],function() 
 {
-    Route::get('/', array('as'=>'welcome','uses'=>'WelcomeController@showWelcome'));
+       Route::get('/', array('as'=>'welcome','uses'=>'WelcomeController@showWelcome'));
     Route::get('/admin',array('as'=>'admin','uses'=>'AdminController@show'));   
-    });
+});
 
 Route::group(['before' => 'auth', 'namespace' => 'TT\Controllers'], function()
 {
@@ -37,5 +38,7 @@ Route::group(['before' => 'auth', 'namespace' => 'TT\Controllers'], function()
     Route::post('/print-codes',array('as'=>'print.codes','uses'=>'Teacher\StudentController@printCodes'));
     Route::resource('activity','ActivityController');
 
-    Route::get('/activity/{id}/complete',array('as'=>'activity.complete','uses'=>'ActivityController@complete'));
+    Route::get('/activity/{id}/complete',array('as'=>'activity.complete.get','uses'=>'ActivityController@getComplete'));
+    Route::post('/activity/{id}/complete',array('as'=>'activity.complete.post','uses'=>'ActivityController@postComplete'));
+
 });
