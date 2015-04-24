@@ -174,11 +174,6 @@ class ActivityController extends BaseController {
 
         $form = new ActivityRateForm;
 
-        if( ! $form->isValid($input) )
-        {
-            return Redirect::back()->withInput()->withErrors($form->getErrors());
-        }
-
         $user = Authenticator::user();
         
         $activity = $this->activityService->find($id);

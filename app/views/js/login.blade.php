@@ -5,7 +5,6 @@
 <script src="https://s3.amazonaws.com/teachtogether.co/assets/js/wow.min.js"></script>
 <!-- Custom Theme JavaScript -->
 <script src="https://s3.amazonaws.com/teachtogether.co/assets/js/custom.js"></script>
-
 <script>
 
     $('#studentSignUpModal').on('show.bs.modal', function () {
