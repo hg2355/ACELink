@@ -274,6 +274,17 @@ class ActivityService
     {
         try
         {
+            $student = $user->students()->first();
+
+            
+            if( $activity->id == 1)
+            {
+                $student->activities()->attach($activity->id); 
+                $listener->setMsg('messages.activity_complete',['name'=>$activity->title]);
+
+                return true;
+            }
+
             $rating = $data['rating'];
             $appropriate = $data['appropriate'];
             $experience = $data['experience'];
@@ -287,8 +298,6 @@ class ActivityService
                 $listener->setMsg('messages.activity_already_rated');
                 return false;
             }
-
-            $student = $user->students()->first();
 
             $student->activities()->attach($activity->id); 
 

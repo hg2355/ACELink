@@ -163,9 +163,31 @@ class ActivityController extends BaseController {
     public function getComplete($id)
     {
         $user = Authenticator::user();
+        
         $activity = $this->activityService->find($id);
 
-        return View::make('pages.activity.rate')->with('activity',$activity)->with('user',$user);
+        if( $id != 1)
+        {
+            
+            return View::make('pages.activity.rate')->with('activity',$activity)->with('user',$user);
+        }
+
+        else
+        {
+            if( $this->activityService->complete($activity,[],$user,$this) )
+            {
+                $this->flashSuccess();
+            }
+
+            else
+            {
+                $this->flashWarning();
+            }
+
+        
+            return Redirect::route('home');
+
+        }
     }
 
     public function postComplete($id)
