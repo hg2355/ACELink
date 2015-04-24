@@ -22,6 +22,7 @@ else if( Session::has('success') )
 <table class="table table-striped table-bordered" style="margin-top: 15px">
 <tr>
     <td>Title</td>
+    <td>Avg. Rating</td>
     <td>Actions</td>
 <?php 
 
@@ -29,7 +30,8 @@ foreach($activities as $activity)
 {
     echo '<tr id="'.$activity->title.'">';
     echo '<td>'.$activity->title.'</td>';
-    
+    $rating = $activity->avgRating();
+    echo '<td>'.$rating.'</td>';
     $deleteString = "'".$activity->id."'".",'activity','".$activity->title."'";
 
     echo '<td><a href="'.URL::route('activity.edit',[$activity->id]).'" class="btn btn-warning">Edit</a><a href="#" data-token="'.csrf_token().'" class="btn btn-danger" style="margin-left: 15px" onclick="destroy('.$deleteString.')">Delete</a></td>';

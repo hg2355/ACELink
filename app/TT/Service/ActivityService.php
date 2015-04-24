@@ -280,7 +280,7 @@ class ActivityService
 
             \DB::beginTransaction();
 
-            $survey = \DB::table('activities_surveys')->where('activity_id','=',$activity->id)->first();
+            $survey = \DB::table('activities_surveys')->where('activity_id','=',$activity->id)->where('parent_id','=',$user->id)->first();
 
             if( ! is_null($survey) )
             {
