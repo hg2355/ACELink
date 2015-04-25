@@ -112,6 +112,8 @@ class ActivityController extends BaseController {
 	{
         $form = new ActivityUpdateForm($id);
 
+        $input = input::all();
+
         if( ! $form->isValid($input) )
         {
             return Redirect::back()->withErrors($input)->withInput();
