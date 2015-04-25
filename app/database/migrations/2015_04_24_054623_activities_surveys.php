@@ -28,7 +28,7 @@ class ActivitiesSurveys extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('activities_questions');
+		Schema::drop('activities_surveys');
 	}
 
 }
