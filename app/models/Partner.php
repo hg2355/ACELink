@@ -30,4 +30,5 @@ class Partner extends User
     {
         return $this->pivot->relationship;
     }
+
 }

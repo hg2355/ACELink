@@ -69,7 +69,7 @@ parent notes using the button below.<br><br>
         <col width="60%">
         <col width="15%">
                 <thead>
-                <tr>
+        <tr>
             <th style="vertical-align:bottom">Student Name</th>
             <th style="vertical-align:bottom">Parent Info</th>
             <th style="vertical-align:bottom">Time Spent</th>
@@ -80,19 +80,14 @@ parent notes using the button below.<br><br>
                 <tr>
           
                     <td style="text-align:left; vertical-align:middle"> 
-                      {{ $student->fullname }} </td>
+                    <?php echo $student->fullname ?> </td>
                     <?php $relationship = $student->partners()->first()->relationship ?>
                     <td style="text-align:left; vertical-align:middle"> 
-                      {{ $student->fullname }}'s {{ $relationship }} has signed up successfully.</td>
+                    <?php $format = '%s\'s ';?>
+                    <?php echo sprintf($format,$student->first_name). $relationship .' has signed up successfully.'?></td>
                       <td style="text-align:left; vertical-align:middle"> 
-                      <!--
-
-                      Insert code here to get time spent per parent over their entire lifetime on the website.
-                      Later on we may need to change this to the "past week" or "past month" etc.
-
-                    -->
-
-                  </td> 
+                     <?php echo $student->traits()->first()->activity_total_time; ?> 
+                     </td> 
                 @endforeach
                 
         </tbody>

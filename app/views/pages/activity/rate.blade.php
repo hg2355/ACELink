@@ -29,9 +29,9 @@
 </div>
 
 <div class="form-group">
-    <label class="booktext"> How would you rate this activity overall on a scale of 0 (bad) to 100 (good)?
+    <label class="booktext"> How would you rate this activity overall on a scale of 0 (bad) to 5 (good)?
     </label>
-    <input id="rating" name="rating" data-slider-id="rating" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="50"/>
+    <input id="rating" name="rating" type="number" class="rating" min=0 max=5 step=1 data-size="md"/>
 </div>
  <div class="col-lg-2 col-lg-offset-5">
         <br>
