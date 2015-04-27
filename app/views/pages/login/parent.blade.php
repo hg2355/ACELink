@@ -52,7 +52,7 @@
                       <div class="row">
                         
 
-          <span class="btn btn-default" data-toggle="modal" onclick="OpenForgetPassword(2);" data-target="#forgotPasswordModal">Forgot Password</span><span id="login" class="btn btn-success fleft" >Log in</span>
+          <span class="btn btn-default" data-toggle="modal" data-target="#forgotPasswordModal">Forgot Password</span><span id="login" class="btn btn-success fleft" >Log in</span>
                        </div>
                   </div>
                 </div>
@@ -122,6 +122,7 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
         <h2 class="modal-title" id="signupSuccessModalLabel">Registration</h2>
+        </div>
         <div class="modal-body">
           <p class="booktext">Check your email for login details.</p>
       </div>

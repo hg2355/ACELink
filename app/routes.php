@@ -18,14 +18,14 @@ Route::group(['before'=>'session','namespace' => 'TT\Controllers'],function()
 
     Route::post('/teacher',array('as'=>'teacher.post','uses'=>'Teacher\SignUpController@store'));
     Route::post('/parent',array('as'=>'parent.post','uses'=>'Parent\SignUpController@store'));
-    Route::post('/reset-password', array('as'=>'reset.password.post','uses'=>'PasswordResetController@postReset'));
+    Route::post('/pwd/reset', array('as'=>'pwd.reset.post','uses'=>'PasswordResetController@postReset'));
 
 });
 
 
 Route::group(['namespace' => 'TT\Controllers'],function() 
 {
-       Route::get('/', array('as'=>'welcome','uses'=>'WelcomeController@showWelcome'));
+    Route::get('/', array('as'=>'welcome','uses'=>'WelcomeController@showWelcome'));
     Route::get('/admin',array('as'=>'admin','uses'=>'AdminController@show'));   
 });
 
@@ -40,5 +40,8 @@ Route::group(['before' => 'auth', 'namespace' => 'TT\Controllers'], function()
 
     Route::get('/activity/{id}/complete',array('as'=>'activity.complete.get','uses'=>'ActivityController@getComplete'));
     Route::post('/activity/{id}/complete',array('as'=>'activity.complete.post','uses'=>'ActivityController@postComplete'));
+    
+    Route::get('pwd/change',array('as'=>'pwd.change.get','uses'=>'PasswordResetController@getChange'));
+    Route::post('pwd/change',array('as'=>'pwd.change.post','uses'=>'PasswordResetController@postChange'));
 
 });

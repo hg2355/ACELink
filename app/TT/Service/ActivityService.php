@@ -337,4 +337,23 @@ class ActivityService
             return false;
         }
     }
+
+    public function getAvgActivityTime()
+    {
+        try
+        {
+            $avg = \DB::table('activities')->join('users_activities',
+                                           'activities.id',
+                                           '=',
+                                           'users_activities.activity_id')
+                                    ->select('time')
+                                    ->avg('time');
+            return (int)$avg;
+        }
+
+        catch(\Exception $ex)
+        {
+            return 0;
+        }
+    }
 }
