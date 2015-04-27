@@ -29,7 +29,19 @@ if( count($activities) === 0 )
     echo '<div class="alert alert-info" role="alert">No more activities at the moment.</div>';
 }
 ?>
-  
+<div class="row center-block">
+    <table class="table">
+    <tr>
+        <td><?php echo $student->first_name.'\'s'. ' activity time (in minutes)'?></td>
+        <td><?php echo 'Average student activity time (in minutes)'?></td>
+    </tr>
+    <tr>
+        <td><?php echo $student->traits()->first()->activity_total_time ?></td>
+        <td><?php echo $avg ?></td>
+    </tr>
+    </table>    
+</div>  
+
 <!-- START OF ACTIVITIES SECTION -->  
     <div class="row">
       <div class="col-lg-2 col-lg-offset-5">

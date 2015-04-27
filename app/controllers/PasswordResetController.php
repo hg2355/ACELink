@@ -1,19 +1,23 @@
 <?php namespace TT\Controllers;
 
+use View;
 use Input;
 use Sentry;
+use Redirect;
 use Response;
 use BaseController;
-use TT\Service\TeacherService;
+use TT\Auth\Authenticator;
+use TT\Service\PasswordService;
 use TT\User\UserPasswordResetForm;
+use TT\User\UserPasswordChangeForm;
 
 class PasswordResetController extends BaseController {
 
-    private $teacherService = null;
+    private $pwdService = null;
 
-    public function __construct(TeacherService $teacherService)
+    public function __construct(PasswordService $pwdService)
     {
-        $this->teacherService = $teacherService;
+        $this->pwdService = $pwdService;
     }
 
     public function postReset()
@@ -29,7 +33,7 @@ class PasswordResetController extends BaseController {
 
         else
         {
-            if( $this->teacherService->resetPassword($input) )
+            if( $this->pwdService->resetPassword($input) )
             {
                 return $this->successResponse();
             }
@@ -38,6 +42,40 @@ class PasswordResetController extends BaseController {
             {
                 return $this->failResponse();
             }   
+        }
+    }
+
+    public function getChange()
+    {
+        $user = Authenticator::user();
+
+        return View::make('pages.pwd')->with('user',$user);
+    }
+
+    public function postChange()
+    {
+        $input = Input::all();
+
+        $form = new UserPasswordChangeForm;
+
+        if( ! $form->isValid($input) )
+        {
+            return Redirect::back()->withInput()->withErrors($form->getErrors());
+        }
+
+        else
+        {
+            if( $this->pwdService->changePassword($input,$this) )
+            {
+                $this->flashSuccess();
+            }
+
+            else
+            {
+                $this->flashWarning();
+            }
+
+            return Redirect::route('home');
         }
     }
 

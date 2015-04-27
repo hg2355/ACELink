@@ -27,7 +27,7 @@
         var dataString = 'email='+email;
 
         $.ajax({
-                url: "reset-password",
+                url: "pwd/reset",
                 type: "post",
                 data: dataString,
                 dataType: "json",

@@ -8,6 +8,8 @@ return [
     'password_required' => 'Password is required.',
     'login_required' => 'Login is required.',
     'valid_login' => ':email has logged in.',
+    'pwd_changed_success'=>'Password changed successfully.',
+    'pwd_changed_failure'=>'Password change failed.',
     'entity_store_success' => ':name was successfully created.',
     'entity_store_failure' => 'Failed to create :name.',
     'entity_update_success' => ':name was successfully updated.',

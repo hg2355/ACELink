@@ -39,11 +39,13 @@ class HomeController extends BaseController {
             $user = Authenticator::user();
 
             $activities = $this->activityService->getActivities($user);
-            
+            $avg = $this->activityService->getAvgActivityTime();
+
             return $view
                     ->with('user_type',Session::get('user_type'))
                     ->with('user',Authenticator::user())
-                    ->with('activities',$activities);
+                    ->with('activities',$activities)
+                    ->with('avg',$avg);
         }
 
         else

@@ -20,8 +20,8 @@
             <ul class="nav navbar-nav">
                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $user->first_name;?>&nbsp;<b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                    <li><a href="/profile" style="color:black">Edit Profile</a></li>
-                    <li><a href="/password" style="color:black">Change Password</a></li>
+                    <li><a href="#" style="color:black">Edit Profile</a></li>
+                    <li><a href="/pwd/change" style="color:black">Change Password</a></li>
                     <li><a href="/logout" style="color:black">Logout</a></li>
                 </ul>
                 </li>

@@ -124,6 +124,7 @@ return array(
         'Cartalyst\Sentry\SentryServiceProvider',
         'TT\Provider\UserEventsProvider',
         'TT\Provider\UserProvider',
+        'TT\Provider\ValidationServiceProvider',
         'Maxxscho\LaravelTcpdf\LaravelTcpdfServiceProvider',
 	),
 
