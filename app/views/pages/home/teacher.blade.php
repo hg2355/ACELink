@@ -72,7 +72,7 @@ parent notes using the button below.<br><br>
         <tr>
             <th style="vertical-align:bottom">Student Name</th>
             <th style="vertical-align:bottom">Parent Info</th>
-            <th style="vertical-align:bottom">Time Spent</th>
+            <th style="vertical-align:bottom" data-sortable="true">Time Spent</th>
         </tr></thead>
         <tbody >
                 <?php $students = $user->students()->get() ?>              
@@ -82,9 +82,10 @@ parent notes using the button below.<br><br>
                     <td style="text-align:left; vertical-align:middle"> 
                     <?php echo $student->fullname ?> </td>
                     <?php $relationship = $student->partners()->first()->relationship ?>
+                  
                     <td style="text-align:left; vertical-align:middle"> 
                     <?php $format = '%s\'s ';?>
-                    <?php echo sprintf($format,$student->first_name). $relationship .' has signed up successfully.'?></td>
+                    <?php echo sprintf($format,$student->first_name). $relationship.' has signed up successfully.'?></td>
                       <td style="text-align:left; vertical-align:middle"> 
                      <?php echo $student->traits()->first()->activity_total_time; ?> 
                      </td> 
