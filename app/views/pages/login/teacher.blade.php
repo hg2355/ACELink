@@ -130,6 +130,10 @@
                 <label>Grade You are Teaching</label>
                 <?php $grades = [''=>'Select a grade','K'=>'Kindergarten','1'=>'First']; ?>
                 <?php echo Form::select('grade', $grades, null, ['class'=>'form-control','id'=>'grade']); ?>
+                <br>
+                *Teach Together currrently has content for Kindergarten and 1st grade students. More content will
+                be added later.
+
             </div>
             <div class="form-group">
                 <label>Zipcode</label>
