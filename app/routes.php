@@ -26,7 +26,8 @@ Route::group(['before'=>'session','namespace' => 'TT\Controllers'],function()
 Route::group(['namespace' => 'TT\Controllers'],function() 
 {
     Route::get('/', array('as'=>'welcome','uses'=>'WelcomeController@showWelcome'));
-    Route::get('/admin',array('as'=>'admin','uses'=>'AdminController@show'));   
+    Route::get('/admin',array('as'=>'admin','uses'=>'AdminController@show'));
+    Route::post('/invite',array('as'=>'invite','uses'=>'WelcomeController@postInvite'));   
 });
 
 Route::group(['before' => 'auth', 'namespace' => 'TT\Controllers'], function()
