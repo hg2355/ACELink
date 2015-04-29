@@ -2,7 +2,33 @@
 @section('content')
 <!-- Section: intro -->
     <section id="intro" class="intro">
-  <div class="slogan col-md-4 col-md-offset-4 " >
+<div class="slogan col-md-4 col-md-offset-4 " >
+<?php 
+if( Session::has('warning') )
+{
+    echo '<div class="alert alert-warning" role="alert">'.Session::get('warning').'</div>';
+}
+else if( Session::has('info') )
+{
+   echo '<div class="alert alert-info" role="alert">'.Session::get('info').'</div>';
+}
+else if( Session::has('success') )
+{
+   echo '<div class="alert alert-success" role="alert">'.Session::get('success').'</div>';
+}
+
+?>
+@if( count($errors->all()) > 0 )
+<div class="alert alert-danger alert-dismissible" role="alert">
+<ul style="text-align:left">
+<?php foreach($errors->all() as $error)
+      {
+        echo '<li>'.$error.'</li>';
+      }
+?>
+</ul>
+</div>
+@endif
     <div class="slogan" >
       <h2 style="font-size:300%"><br>
         TRANSFORM PARENTS INTO <SPAN style="color:orange">PARTNERS</spam></h2>
@@ -148,7 +174,7 @@
 </div>
 </section>
 <!-- /Impact section -->
- <!--
+ 
 <section id="service" class="home-section text-center bg-info">
     
     <div class="heading-about">
@@ -182,15 +208,11 @@
                             <div class="input-group">
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span>
                                 </span>
-                                <input type="email" class="form-control" id="email" placeholder="Enter email" required="required" />
+                                <input type="email" class="form-control" name="invite_email" id="invite_email" placeholder="Enter email" required="required" />
                               </div></p>
-                              <button type="submit" class="btn btn-skin" id="btnContactUs">
+                              <button type="submit" class="btn btn-skin" id="invite_submit">
                           Join Us</button>
-
-
-
       </div>
-    
     </div>
   </div>
 </div>
@@ -198,7 +220,7 @@
 
 </section>
 
--->
+
 
 <!-- Section: contact -->
 

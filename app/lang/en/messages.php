@@ -19,5 +19,7 @@ return [
     'entity_not_found' => ':entity not found.',
     'activity_complete'=>':name complete.',
     'activity_failure'=>':name failed to complete.',
-    'activity_already_rated'=>'You already rated that activity.'
+    'activity_already_rated'=>'You already rated that activity.',
+    'invite_success' => 'Invitation sent to :email!',
+    'invite_failure' => 'Failed to send invitation to :email. Contact admin.'
 ];
