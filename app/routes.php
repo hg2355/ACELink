@@ -27,6 +27,10 @@ Route::group(['namespace' => 'TT\Controllers'],function()
 {
     Route::get('/', array('as'=>'welcome','uses'=>'WelcomeController@showWelcome'));
     Route::get('/admin',array('as'=>'admin','uses'=>'AdminController@show'));
+    Route::get('/privacy', array('as'=>'privacy','uses'=>'HomeController@getPrivacy'));
+    Route::get('/terms-of-service', array('as'=>'tos','uses'=>'HomeController@getTOS'));
+
+
     Route::post('/invite',array('as'=>'invite','uses'=>'WelcomeController@postInvite'));   
 });
 

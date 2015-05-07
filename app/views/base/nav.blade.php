@@ -12,7 +12,7 @@
         <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
             <ul class="nav navbar-nav">
                 <li ><a href="/parent/home">Parents</a></li>
-                <li class="active"><a href="/teacher/home">Teachers</a></li>
+                <!-- <li class="active"><a href="/teacher/home">Teachers</a></li> -->
             </ul>
         </div>
         @else

@@ -56,4 +56,14 @@ class HomeController extends BaseController {
              
         }
     }
+
+    public function getTOS()
+    {
+        return View::make('pages.tos');
+    }
+
+    public function getPrivacy()
+    {
+        return View::make('pages.privacy');
+    }
 }    
