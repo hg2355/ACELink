@@ -10,7 +10,7 @@
           </div>
           </div>
           <p>&copy;&nbsp;Copyright 2015 - Teach Together - toPoint, LLC. All rights reserved.</p>
-          <p>Terms of Service | Privacy Policy</p>
+          <p> <a style="color:white" href="/terms-of-service">Terms of Service</a> | <a style="color:white" href="/privacy">Privacy Policy</a></p>
         </div>
       </div>  
     </div>
