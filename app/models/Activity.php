@@ -76,7 +76,13 @@ class Activity extends \Eloquent
 
             $studentsFinished = \DB::table('users_activities')->select('id')->distinct();
 
-            $total = bcdiv(count($students),count($studentsFinished),3)*100;
+            $students = count($students);
+            $studentsFinished = count($studentFinished);
+
+            if( $students <= 0 || $studentFinished <= 0)
+                return 0;
+
+            $total = bcdiv($studentsFinished,$students,3)*100;
 
             return $total;
         }
