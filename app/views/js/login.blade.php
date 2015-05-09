@@ -77,13 +77,25 @@
                 dataType: "json",
                 processData: false,
                 success: function(data)
-                {
-                    window.location.href = '/home';
+                {           
+
+                    var success = data.success;
+
+                    if( success === 0 )
+                    {
+                        var message = data.msg;
+
+                        alert(message);
+                    }
+
+                    else
+                    {
+                        window.location.href = '/home';
+                    }
                 },
                 error: function(x,status,error) 
                 {
-                    if( x.status == 403 )
-                        window.location.href = '/login';
+
                 }
         });
 

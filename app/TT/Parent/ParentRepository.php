@@ -15,7 +15,7 @@ class ParentRepository extends ModelRepository
     {
         $this->save($data);
         
-        $parentGroup = Sentry::findGroupByName('Student');
+        $parentGroup = Sentry::findGroupByName('Parent');
 
         $this->model->addGroup($parentGroup);
 

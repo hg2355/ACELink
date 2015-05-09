@@ -13,9 +13,29 @@ class Authenticator
         try
         {
             $user = Sentry::findUserByCredentials($credentials,false);
+            
+            $userType = Session::get('user_type');
+
+            if( strcmp($userType,'admin') === 0&& ! $user->isAdmin() )
+            {
+                $listener->setMsg('messages.not_admin');
+                return false;
+            }
+
+            else if( strcmp($userType,'teacher') === 0&& ! $user->isTeacher() )
+            {
+                $listener->setMsg('messages.not_teacher');
+                return false;
+            }
+
+            else if( strcmp($userType,'parent') === 0 && ! $user->isParent() )
+            {
+                $listener->setMsg('messages.not_parent');
+                return false;
+            }
 
             Sentry::login($user,false);
-            
+
             $listener->setMsg('messages.valid_login',['email'=> $user->email]);
             return true;
         }

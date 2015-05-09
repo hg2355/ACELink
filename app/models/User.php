@@ -34,19 +34,19 @@ class User extends CartalystUser
         return $this->belongsToMany(static::$groupModel, static::$userGroupsPivot, 'user_id', 'group_id');
     }
 
-    public function isStudent()
+    public function isTeacher()
     {
-        $this->traits_type === 'TT\Models\StudentTrait' ? true : false;
+        return $this->hasAnyAccess(['Teacher']);
     }
 
     public function isAdmin()
     {
-        $this->traits_type === 'TT\Models\AdminTrait' ? true : false;
+        return $this->hasAnyAccess(['Admin']);
     }
 
     public function isParent()
     {
-        $this->traits_type === 'TT\Models\ParentTrait' ? true : false;
+        return $this->hasAnyAccess(['Parent']);
     }
 
     public function student()

@@ -34,5 +34,4 @@ class Lists
                 0=>'Boring'
                 ];
     }
-
 }

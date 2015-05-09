@@ -21,5 +21,8 @@ return [
     'activity_failure'=>':name failed to complete.',
     'activity_already_rated'=>'You already rated that activity.',
     'invite_success' => 'Invitation request received for :email!',
-    'invite_failure' => 'Failed to send invitation to :email. Contact admin.'
+    'invite_failure' => 'Failed to send invitation to :email. Contact admin.',
+    'not_admin'=>'You are not an admin.',
+    'not_teacher'=>'You are not a teacher.',
+    'not_parent'=>'You are not a parent.'
 ];
