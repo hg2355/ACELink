@@ -36,17 +36,17 @@ class User extends CartalystUser
 
     public function isTeacher()
     {
-        return $this->hasAnyAccess(['Teacher']);
+        return $this->hasAnyAccess(['teacher']);
     }
 
     public function isAdmin()
     {
-        return $this->hasAnyAccess(['Admin']);
+        return $this->hasAnyAccess(['admin']);
     }
 
     public function isParent()
     {
-        return $this->hasAnyAccess(['Parent']);
+        return $this->hasAnyAccess(['parent']);
     }
 
     public function student()
