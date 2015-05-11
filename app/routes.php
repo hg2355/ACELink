@@ -34,7 +34,7 @@ Route::group(['namespace' => 'TT\Controllers'],function()
     Route::post('/invite',array('as'=>'invite','uses'=>'WelcomeController@postInvite'));   
 });
 
-Route::group(['before' => 'auth', 'namespace' => 'TT\Controllers'], function()
+Route::group(['before' => 'auth','after' => 'nocache', 'namespace' => 'TT\Controllers'], function()
 {
     Route::get('/logout',array('as'=>'logout.get','uses'=>'LoginController@getLogout'));
     Route::get('/home',array('as'=>'home','uses'=>'HomeController@showHome'));

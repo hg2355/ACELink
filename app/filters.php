@@ -79,6 +79,12 @@ Route::filter('auth', function()
     }
 });
 
+Route::filter('nocache',function($route, $request, $response)
+{
+    // No caching for pages, you can do some checks before
+        $response->header("Pragma", "no-cache");
+        $response->header("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0");
+});
 
 Route::filter('auth.basic', function()
 {
