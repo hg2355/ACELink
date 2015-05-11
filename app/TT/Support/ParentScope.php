@@ -9,7 +9,7 @@ class ParentScope implements ScopeInterface
 
     public function apply(Builder $builder)
     {
-        $builder->where('traits_type',self::$parentTraitModel);
+        $builder->where('traits_type','=',self::$parentTraitModel);
     }
     
     public function remove(Builder $builder)

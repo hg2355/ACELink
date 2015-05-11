@@ -24,6 +24,19 @@ class ParentService
         $this->codeRepo = $codeRepo;
     }
     
+    public function all()
+    {
+        try
+        {
+            return $this->parentRepo->getAll();
+        }
+
+        catch(\Exception $ex)
+        {
+            \Log::error($ex);
+        }
+    }
+   
     public function createWithStudent($data)
     {
         try

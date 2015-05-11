@@ -2,8 +2,9 @@
 
 use TT\Traits\UserParentTrait;
 use Illuminate\Database\Eloquent\SoftDeletingTrait;
+use Cartalyst\Sentry\Users\Eloquent\User as CartalystUser;
 
-class Partner extends User
+class Partner extends CartalystUser
 {
     use UserParentTrait;
 
@@ -29,6 +30,11 @@ class Partner extends User
     public function getRelationshipAttribute()
     {
         return $this->pivot->relationship;
+    }
+    
+    public function getFullNameAttribute()
+    {
+        return $this->first_name . ' ' . $this->last_name;
     }
 
 }

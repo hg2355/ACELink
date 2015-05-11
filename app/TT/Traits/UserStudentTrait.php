@@ -4,7 +4,7 @@ use TT\Support\StudentScope;
 
 trait UserStudentTrait
 {
-    public static function bootStudentTrait()
+    public static function bootUserStudentTrait()
     {
         static::addGlobalScope(new StudentScope);
     }

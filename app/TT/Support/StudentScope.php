@@ -9,7 +9,7 @@ class StudentScope implements ScopeInterface
 
     public function apply(Builder $builder)
     {
-        $builder->where('traits_type',self::$studentTraitModel);
+        $builder->where('traits_type','=',self::$studentTraitModel);
     }
     
     public function remove(Builder $builder)

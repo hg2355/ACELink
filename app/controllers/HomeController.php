@@ -4,13 +4,17 @@ use View;
 use Session;
 use BaseController;
 use TT\Auth\Authenticator;
+use TT\Service\ParentService;
+use TT\Service\TeacherService;
 use TT\Service\ActivityService;
 
 class HomeController extends BaseController {
     
-    public function __construct(ActivityService $activityService)
+    public function __construct(ActivityService $activityService, ParentService $parentService, TeacherService $teacherService)
     {
         $this->activityService = $activityService;
+        $this->parentService = $parentService;
+        $this->teacherService = $teacherService;
     }
 
 	public function showHome()
@@ -27,11 +31,15 @@ class HomeController extends BaseController {
         if( strcmp($userType,'admin') === 0)
         {
             $activities = $this->activityService->all();
+            $parents = $this->parentService->all();
+            $teachers = $this->teacherService->all();
 
             return $view
-                    ->with('user_type',Session::get('user_type'))
+                    ->with('user_type',$userType)
                     ->with('user',Authenticator::user())
-                    ->with('activities',$activities);
+                    ->with('activities',$activities)
+                    ->with('parents',$parents)
+                    ->with('teachers',$teachers);
         }
 
         else if( strcmp($userType,'parent') === 0)
@@ -42,7 +50,7 @@ class HomeController extends BaseController {
             $avg = $this->activityService->getAvgActivityTime();
 
             return $view
-                    ->with('user_type',Session::get('user_type'))
+                    ->with('user_type',$userType)
                     ->with('user',Authenticator::user())
                     ->with('activities',$activities)
                     ->with('avg',$avg);
@@ -51,7 +59,7 @@ class HomeController extends BaseController {
         else
         {
             return $view
-                    ->with('user_type',Session::get('user_type'))
+                    ->with('user_type',$userType)
                     ->with('user',Authenticator::user());
              
         }

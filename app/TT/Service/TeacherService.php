@@ -23,6 +23,19 @@ class TeacherService
         $this->codeRepo = $codeRepo;
     }
 
+    public function all()
+    {
+        try
+        {
+            return $this->teacherRepo->getAll();
+        }
+
+        catch(\Exception $ex)
+        {
+            \Log::error($ex);
+        }
+    }
+   
     public function generateCodes(array $data)
     {
         $count = (int)$data['count'];

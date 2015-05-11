@@ -25,7 +25,7 @@ class ActivityService
     {
         try
         {
-            return $this->activityRepo->all();
+            return $this->activityRepo->getAll();
         }
 
         catch(\Exception $ex)

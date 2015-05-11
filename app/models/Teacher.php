@@ -1,8 +1,9 @@
 <?php namespace TT\Models;
 
 use TT\Traits\UserTeacherTrait;
+use Cartalyst\Sentry\Users\Eloquent\User as CartalystUser;
 
-class Teacher extends User
+class Teacher extends CartalystUser
 {
     use UserTeacherTrait;
 
@@ -17,6 +18,7 @@ class Teacher extends User
                           ];
     
     protected static $modelTraitType = 'TT\Models\TeacherTrait';
+    protected $table = 'users';
 
     public function fill(array $fillable)
     {
@@ -28,6 +30,11 @@ class Teacher extends User
     public function schools()
     {
         return $this->belongsToMany('TT\Models\School','teachers_schools');
+    }
+
+    public function getFullNameAttribute()
+    {
+        return $this->first_name . ' ' . $this->last_name;
     }
 
 }
