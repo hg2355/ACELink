@@ -26,7 +26,7 @@ $teachersCount = count($teachers);
 
 if( $teachersCount === 0)
 {
-    echo '<div class="row style="text-align: left"> No teachers registered.</div>';
+    echo '<div class="row" style="text-align: left"><h3><b>No teachers registered.</h3></b></div>';
 }
 
 else
@@ -52,7 +52,7 @@ $parentsCount = count($parents);
 
 if( $parentsCount === 0)
 {
-    echo '<div class="row style="text-align: left"> No parents registered.</div>';
+    echo '<div class="row" style="text-align: left"><b><h3>No parents registered.</h3></b></div>';
 }
 
 else
