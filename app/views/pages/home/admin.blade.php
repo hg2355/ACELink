@@ -26,7 +26,7 @@ $teachersCount = count($teachers);
 
 if( $teachersCount === 0)
 {
-    echo '<div class="alert alert-info" role="alert">No teachers registered.</div>';
+    echo '<div class="alert alert-info" role="alert" style="margin-top: 15px">No teachers registered.</div>';
 }
 
 else
@@ -52,7 +52,7 @@ $parentsCount = count($parents);
 
 if( $parentsCount === 0)
 {
-    echo '<div class="alert alert-info" role="alert">No parents registered.</div>';
+    echo '<div class="alert alert-info" role="alert" style="margin-top: 15px">No parents registered.</div>';
 }
 
 else

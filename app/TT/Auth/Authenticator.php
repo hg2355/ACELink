@@ -80,6 +80,8 @@ class Authenticator
 
     public static function logout()
     {
+        if( Session::has('user_type') )
+            Session::flush();
         return Sentry::logout();
     }
 
