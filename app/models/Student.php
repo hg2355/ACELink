@@ -3,9 +3,10 @@
 use TT\Traits\UserStudentTrait;
 use Illuminate\Database\Eloquent\SoftDeletingTrait;
 
-class Student extends User
+class Student extends \Eloquent
 {
     use UserStudentTrait;
+    use SoftDeletingTrait;
 
     protected $fillable = [ 'first_name',
                             'last_name',
@@ -18,6 +19,42 @@ class Student extends User
                           ];
     
     protected static $modelTraitType = 'TT\Models\StudentTrait';
+    protected $table = 'users';
+
+    public function scopeEmail($query,$email)
+    {
+        return $query->where('email','=',$email)->first();
+    }
+
+    public function getFullNameAttribute()
+    {
+        return $this->first_name . ' ' . $this->last_name;
+    }
+
+    public function traits()
+    {
+        return $this->morphTo();
+    }
+
+    public function groups()
+    {   
+        return $this->belongsToMany(static::$groupModel, static::$userGroupsPivot, 'user_id', 'group_id');
+    }
+
+    public function isTeacher()
+    {
+        return $this->hasAnyAccess(['teacher']);
+    }
+
+    public function isAdmin()
+    {
+        return $this->hasAnyAccess(['admin']);
+    }
+
+    public function isParent()
+    {
+        return $this->hasAnyAccess(['parent']);
+    }
 
     public function fill(array $fillable)
     {

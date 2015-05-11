@@ -1,9 +1,8 @@
 <?php namespace TT\Models;
 
 use TT\Traits\UserTeacherTrait;
-use Cartalyst\Sentry\Users\Eloquent\User as CartalystUser;
 
-class Teacher extends CartalystUser
+class Teacher extends \Eloquent
 {
     use UserTeacherTrait;
 
@@ -27,14 +26,49 @@ class Teacher extends CartalystUser
         parent::fill($fillable);
     }
 
-    public function schools()
+    public function scopeEmail($query,$email)
     {
-        return $this->belongsToMany('TT\Models\School','teachers_schools');
+        return $query->where('email','=',$email)->first();
     }
 
     public function getFullNameAttribute()
     {
         return $this->first_name . ' ' . $this->last_name;
+    }
+
+    public function traits()
+    {
+        return $this->morphTo();
+    }
+
+    public function groups()
+    {   
+        return $this->belongsToMany(static::$groupModel, static::$userGroupsPivot, 'user_id', 'group_id');
+    }
+
+    public function isTeacher()
+    {
+        return $this->hasAnyAccess(['teacher']);
+    }
+
+    public function isAdmin()
+    {
+        return $this->hasAnyAccess(['admin']);
+    }
+
+    public function isParent()
+    {
+        return $this->hasAnyAccess(['parent']);
+    }
+
+    public function students()
+    {
+        return $this->belongsToMany('TT\Models\Student','teachers_students','teacher_id','student_id');
+    }
+
+    public function schools()
+    {
+        return $this->belongsToMany('TT\Models\School','teachers_schools');
     }
 
 }
